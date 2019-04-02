@@ -3,7 +3,7 @@ abc.jezyk,
 sum(abc.liczba_wnioskow),
 case when abc.rating < 1 then '1. rating <1'
     when abc.rating >= 1 and abc.rating < 50 then '2. rating 1-49'
-    when abc.rating >= 50 then '3. rating >50' end
+    when abc.rating >= 50 then '3. rating >50' else null end
     as Atrakcyjnosc_kampanii
 from
 (
@@ -30,9 +30,15 @@ group by
  ,mks.rating
 ) abc
 group by
-abc.jezyk,
+
 case when abc.rating < 1 then '1. rating <1'
     when abc.rating >= 1 and abc.rating < 50 then '2. rating 1-49'
-    when abc.rating >= 50 then '3. rating >50' end
+    when abc.rating >= 50 then '3. rating >50' else null end,
+abc.jezyk
 order by sum(abc.liczba_wnioskow) desc
 ;
+select
+*
+from m_kampanie mk
+join m_email me on mk.id = me.id_kampanii
+where mk.id = '802'
