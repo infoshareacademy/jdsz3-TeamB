@@ -1,0 +1,361 @@
+jezyk,liczba_wnioskow,ctr_opis,partner,open_rate_opis,wielkosc_kampanii
+da,186,dobra reklama,dreamtours,dobra reklama,duża
+da,57,dobra reklama,dreamtours,dobra reklama,mała
+da,430,dobra reklama,kiribati,dobra reklama,duża
+da,46,dobra reklama,kiribati,dobra reklama,mała
+da,1,dobra reklama,tui,dobra reklama,duża
+da,10,dobra reklama,tui,dobra reklama,mała
+da,143,dobra reklama,wakacje.pl,dobra reklama,duża
+da,134,dobra reklama,wakacje.pl,dobra reklama,mała
+da,20,dobra reklama,kiribati,intrygująca reklama,duża
+da,17,dobra reklama,wakacje.pl,intrygująca reklama,duża
+da,21,intrygująca reklama,dreamtours,dobra reklama,duża
+da,35,intrygująca reklama,dreamtours,dobra reklama,mała
+da,4,intrygująca reklama,kiribati,dobra reklama,mała
+da,1,intrygująca reklama,tui,dobra reklama,mała
+da,36,intrygująca reklama,wakacje.pl,dobra reklama,duża
+da,27,intrygująca reklama,wakacje.pl,dobra reklama,mała
+da,70,intrygująca reklama,dreamtours,intrygująca reklama,duża
+da,11,intrygująca reklama,dreamtours,intrygująca reklama,mała
+da,236,intrygująca reklama,kiribati,intrygująca reklama,duża
+da,32,intrygująca reklama,kiribati,intrygująca reklama,mała
+da,114,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+da,32,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+da,180,spam,dreamtours,spam,duża
+da,133,spam,dreamtours,spam,mała
+da,224,spam,itaka,spam,mała
+da,17,spam,tui,spam,duża
+da,24,spam,tui,spam,mała
+da,109,spam,wakacje.pl,spam,duża
+da,49,spam,wakacje.pl,spam,mała
+de,122,dobra reklama,dreamtours,dobra reklama,duża
+de,38,dobra reklama,dreamtours,dobra reklama,mała
+de,284,dobra reklama,kiribati,dobra reklama,duża
+de,33,dobra reklama,kiribati,dobra reklama,mała
+de,9,dobra reklama,tui,dobra reklama,mała
+de,134,dobra reklama,wakacje.pl,dobra reklama,duża
+de,77,dobra reklama,wakacje.pl,dobra reklama,mała
+de,19,dobra reklama,kiribati,intrygująca reklama,duża
+de,22,dobra reklama,wakacje.pl,intrygująca reklama,duża
+de,9,intrygująca reklama,dreamtours,dobra reklama,duża
+de,6,intrygująca reklama,dreamtours,dobra reklama,mała
+de,2,intrygująca reklama,kiribati,dobra reklama,mała
+de,16,intrygująca reklama,wakacje.pl,dobra reklama,duża
+de,6,intrygująca reklama,wakacje.pl,dobra reklama,mała
+de,27,intrygująca reklama,dreamtours,intrygująca reklama,duża
+de,21,intrygująca reklama,dreamtours,intrygująca reklama,mała
+de,72,intrygująca reklama,kiribati,intrygująca reklama,duża
+de,14,intrygująca reklama,kiribati,intrygująca reklama,mała
+de,63,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+de,25,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+de,110,spam,dreamtours,spam,duża
+de,106,spam,dreamtours,spam,mała
+de,155,spam,itaka,spam,mała
+de,6,spam,tui,spam,duża
+de,30,spam,tui,spam,mała
+de,103,spam,wakacje.pl,spam,duża
+de,37,spam,wakacje.pl,spam,mała
+el,1,dobra reklama,dreamtours,dobra reklama,duża
+el,1,dobra reklama,dreamtours,dobra reklama,mała
+el,4,dobra reklama,kiribati,dobra reklama,duża
+el,2,dobra reklama,kiribati,dobra reklama,mała
+el,3,intrygująca reklama,kiribati,intrygująca reklama,duża
+el,1,intrygująca reklama,kiribati,intrygująca reklama,mała
+el,1,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+el,2,spam,dreamtours,spam,duża
+el,1,spam,dreamtours,spam,mała
+el,4,spam,itaka,spam,mała
+el,1,spam,tui,spam,duża
+el,3,spam,wakacje.pl,spam,duża
+en,2818,dobra reklama,dreamtours,dobra reklama,duża
+en,578,dobra reklama,dreamtours,dobra reklama,mała
+en,8323,dobra reklama,kiribati,dobra reklama,duża
+en,856,dobra reklama,kiribati,dobra reklama,mała
+en,38,dobra reklama,tui,dobra reklama,duża
+en,79,dobra reklama,tui,dobra reklama,mała
+en,3322,dobra reklama,wakacje.pl,dobra reklama,duża
+en,1135,dobra reklama,wakacje.pl,dobra reklama,mała
+en,208,dobra reklama,dreamtours,intrygująca reklama,duża
+en,3,dobra reklama,dreamtours,intrygująca reklama,mała
+en,642,dobra reklama,kiribati,intrygująca reklama,duża
+en,7,dobra reklama,kiribati,intrygująca reklama,mała
+en,10,dobra reklama,tui,intrygująca reklama,mała
+en,343,dobra reklama,wakacje.pl,intrygująca reklama,duża
+en,35,dobra reklama,wakacje.pl,intrygująca reklama,mała
+en,256,intrygująca reklama,dreamtours,dobra reklama,duża
+en,58,intrygująca reklama,dreamtours,dobra reklama,mała
+en,94,intrygująca reklama,kiribati,dobra reklama,mała
+en,16,intrygująca reklama,tui,dobra reklama,mała
+en,855,intrygująca reklama,wakacje.pl,dobra reklama,duża
+en,103,intrygująca reklama,wakacje.pl,dobra reklama,mała
+en,638,intrygująca reklama,dreamtours,intrygująca reklama,duża
+en,105,intrygująca reklama,dreamtours,intrygująca reklama,mała
+en,650,intrygująca reklama,kiribati,intrygująca reklama,duża
+en,219,intrygująca reklama,kiribati,intrygująca reklama,mała
+en,1501,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+en,201,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+en,1274,spam,dreamtours,spam,duża
+en,1156,spam,dreamtours,spam,mała
+en,1930,spam,itaka,spam,mała
+en,318,spam,tui,spam,duża
+en,320,spam,tui,spam,mała
+en,1202,spam,wakacje.pl,spam,duża
+en,524,spam,wakacje.pl,spam,mała
+es,6,dobra reklama,dreamtours,dobra reklama,duża
+es,5,dobra reklama,dreamtours,dobra reklama,mała
+es,16,dobra reklama,kiribati,dobra reklama,duża
+es,1,dobra reklama,kiribati,dobra reklama,mała
+es,9,dobra reklama,wakacje.pl,dobra reklama,duża
+es,5,dobra reklama,wakacje.pl,dobra reklama,mała
+es,4,dobra reklama,kiribati,intrygująca reklama,duża
+es,2,dobra reklama,wakacje.pl,intrygująca reklama,duża
+es,1,intrygująca reklama,dreamtours,dobra reklama,duża
+es,1,intrygująca reklama,kiribati,dobra reklama,mała
+es,2,intrygująca reklama,wakacje.pl,dobra reklama,duża
+es,5,intrygująca reklama,dreamtours,intrygująca reklama,duża
+es,1,intrygująca reklama,dreamtours,intrygująca reklama,mała
+es,8,intrygująca reklama,kiribati,intrygująca reklama,duża
+es,2,intrygująca reklama,kiribati,intrygująca reklama,mała
+es,9,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+es,1,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+es,6,spam,dreamtours,spam,duża
+es,7,spam,dreamtours,spam,mała
+es,18,spam,itaka,spam,mała
+es,4,spam,tui,spam,duża
+es,3,spam,tui,spam,mała
+es,1,spam,wakacje.pl,spam,duża
+es,3,spam,wakacje.pl,spam,mała
+fi,76,dobra reklama,dreamtours,dobra reklama,duża
+fi,30,dobra reklama,dreamtours,dobra reklama,mała
+fi,140,dobra reklama,kiribati,dobra reklama,duża
+fi,19,dobra reklama,kiribati,dobra reklama,mała
+fi,1,dobra reklama,tui,dobra reklama,duża
+fi,5,dobra reklama,tui,dobra reklama,mała
+fi,81,dobra reklama,wakacje.pl,dobra reklama,duża
+fi,46,dobra reklama,wakacje.pl,dobra reklama,mała
+fi,1,dobra reklama,dreamtours,intrygująca reklama,duża
+fi,11,dobra reklama,kiribati,intrygująca reklama,duża
+fi,7,dobra reklama,wakacje.pl,intrygująca reklama,duża
+fi,1,dobra reklama,wakacje.pl,intrygująca reklama,mała
+fi,3,intrygująca reklama,dreamtours,dobra reklama,duża
+fi,4,intrygująca reklama,dreamtours,dobra reklama,mała
+fi,14,intrygująca reklama,wakacje.pl,dobra reklama,duża
+fi,2,intrygująca reklama,wakacje.pl,dobra reklama,mała
+fi,26,intrygująca reklama,dreamtours,intrygująca reklama,duża
+fi,11,intrygująca reklama,dreamtours,intrygująca reklama,mała
+fi,38,intrygująca reklama,kiribati,intrygująca reklama,duża
+fi,10,intrygująca reklama,kiribati,intrygująca reklama,mała
+fi,41,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+fi,16,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+fi,113,spam,dreamtours,spam,duża
+fi,96,spam,dreamtours,spam,mała
+fi,106,spam,itaka,spam,mała
+fi,7,spam,tui,spam,duża
+fi,8,spam,tui,spam,mała
+fi,57,spam,wakacje.pl,spam,duża
+fi,35,spam,wakacje.pl,spam,mała
+fr,38,dobra reklama,dreamtours,dobra reklama,duża
+fr,24,dobra reklama,dreamtours,dobra reklama,mała
+fr,102,dobra reklama,kiribati,dobra reklama,duża
+fr,9,dobra reklama,kiribati,dobra reklama,mała
+fr,1,dobra reklama,tui,dobra reklama,mała
+fr,29,dobra reklama,wakacje.pl,dobra reklama,duża
+fr,29,dobra reklama,wakacje.pl,dobra reklama,mała
+fr,11,dobra reklama,kiribati,intrygująca reklama,duża
+fr,4,dobra reklama,wakacje.pl,intrygująca reklama,duża
+fr,1,dobra reklama,wakacje.pl,intrygująca reklama,mała
+fr,4,intrygująca reklama,dreamtours,dobra reklama,duża
+fr,2,intrygująca reklama,dreamtours,dobra reklama,mała
+fr,3,intrygująca reklama,wakacje.pl,dobra reklama,duża
+fr,4,intrygująca reklama,wakacje.pl,dobra reklama,mała
+fr,8,intrygująca reklama,dreamtours,intrygująca reklama,duża
+fr,4,intrygująca reklama,dreamtours,intrygująca reklama,mała
+fr,36,intrygująca reklama,kiribati,intrygująca reklama,duża
+fr,5,intrygująca reklama,kiribati,intrygująca reklama,mała
+fr,20,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+fr,3,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+fr,10,spam,dreamtours,spam,duża
+fr,21,spam,dreamtours,spam,mała
+fr,70,spam,itaka,spam,mała
+fr,3,spam,tui,spam,duża
+fr,4,spam,tui,spam,mała
+fr,12,spam,wakacje.pl,spam,duża
+fr,10,spam,wakacje.pl,spam,mała
+it,30,dobra reklama,dreamtours,dobra reklama,duża
+it,14,dobra reklama,dreamtours,dobra reklama,mała
+it,67,dobra reklama,kiribati,dobra reklama,duża
+it,6,dobra reklama,kiribati,dobra reklama,mała
+it,29,dobra reklama,wakacje.pl,dobra reklama,duża
+it,19,dobra reklama,wakacje.pl,dobra reklama,mała
+it,4,dobra reklama,kiribati,intrygująca reklama,duża
+it,4,dobra reklama,wakacje.pl,intrygująca reklama,duża
+it,2,intrygująca reklama,dreamtours,dobra reklama,mała
+it,3,intrygująca reklama,wakacje.pl,dobra reklama,duża
+it,7,intrygująca reklama,dreamtours,intrygująca reklama,duża
+it,19,intrygująca reklama,kiribati,intrygująca reklama,duża
+it,5,intrygująca reklama,kiribati,intrygująca reklama,mała
+it,13,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+it,1,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+it,19,spam,dreamtours,spam,duża
+it,18,spam,dreamtours,spam,mała
+it,33,spam,itaka,spam,mała
+it,5,spam,tui,spam,duża
+it,10,spam,wakacje.pl,spam,duża
+it,10,spam,wakacje.pl,spam,mała
+nb,147,dobra reklama,dreamtours,dobra reklama,duża
+nb,56,dobra reklama,dreamtours,dobra reklama,mała
+nb,367,dobra reklama,kiribati,dobra reklama,duża
+nb,23,dobra reklama,kiribati,dobra reklama,mała
+nb,4,dobra reklama,tui,dobra reklama,mała
+nb,167,dobra reklama,wakacje.pl,dobra reklama,duża
+nb,96,dobra reklama,wakacje.pl,dobra reklama,mała
+nb,18,dobra reklama,kiribati,intrygująca reklama,duża
+nb,16,dobra reklama,wakacje.pl,intrygująca reklama,duża
+nb,3,dobra reklama,wakacje.pl,intrygująca reklama,mała
+nb,15,intrygująca reklama,dreamtours,dobra reklama,duża
+nb,9,intrygująca reklama,dreamtours,dobra reklama,mała
+nb,12,intrygująca reklama,wakacje.pl,dobra reklama,duża
+nb,8,intrygująca reklama,wakacje.pl,dobra reklama,mała
+nb,35,intrygująca reklama,dreamtours,intrygująca reklama,duża
+nb,24,intrygująca reklama,dreamtours,intrygująca reklama,mała
+nb,82,intrygująca reklama,kiribati,intrygująca reklama,duża
+nb,20,intrygująca reklama,kiribati,intrygująca reklama,mała
+nb,106,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+nb,32,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+nb,135,spam,dreamtours,spam,duża
+nb,129,spam,dreamtours,spam,mała
+nb,243,spam,itaka,spam,mała
+nb,25,spam,tui,spam,duża
+nb,26,spam,tui,spam,mała
+nb,70,spam,wakacje.pl,spam,duża
+nb,62,spam,wakacje.pl,spam,mała
+nl,10,dobra reklama,dreamtours,dobra reklama,duża
+nl,3,dobra reklama,dreamtours,dobra reklama,mała
+nl,28,dobra reklama,kiribati,dobra reklama,duża
+nl,6,dobra reklama,kiribati,dobra reklama,mała
+nl,1,dobra reklama,tui,dobra reklama,mała
+nl,20,dobra reklama,wakacje.pl,dobra reklama,duża
+nl,13,dobra reklama,wakacje.pl,dobra reklama,mała
+nl,3,dobra reklama,kiribati,intrygująca reklama,duża
+nl,1,dobra reklama,wakacje.pl,intrygująca reklama,duża
+nl,2,intrygująca reklama,dreamtours,dobra reklama,duża
+nl,1,intrygująca reklama,dreamtours,dobra reklama,mała
+nl,5,intrygująca reklama,wakacje.pl,dobra reklama,duża
+nl,7,intrygująca reklama,dreamtours,intrygująca reklama,duża
+nl,1,intrygująca reklama,dreamtours,intrygująca reklama,mała
+nl,7,intrygująca reklama,kiribati,intrygująca reklama,duża
+nl,3,intrygująca reklama,kiribati,intrygująca reklama,mała
+nl,10,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+nl,2,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+nl,22,spam,dreamtours,spam,duża
+nl,13,spam,dreamtours,spam,mała
+nl,17,spam,itaka,spam,mała
+nl,3,spam,tui,spam,duża
+nl,3,spam,tui,spam,mała
+nl,10,spam,wakacje.pl,spam,duża
+nl,7,spam,wakacje.pl,spam,mała
+no,1,dobra reklama,kiribati,dobra reklama,duża
+pl,590,dobra reklama,dreamtours,dobra reklama,duża
+pl,128,dobra reklama,dreamtours,dobra reklama,mała
+pl,1618,dobra reklama,kiribati,dobra reklama,duża
+pl,154,dobra reklama,kiribati,dobra reklama,mała
+pl,10,dobra reklama,tui,dobra reklama,duża
+pl,8,dobra reklama,tui,dobra reklama,mała
+pl,718,dobra reklama,wakacje.pl,dobra reklama,duża
+pl,253,dobra reklama,wakacje.pl,dobra reklama,mała
+pl,53,dobra reklama,dreamtours,intrygująca reklama,duża
+pl,1,dobra reklama,dreamtours,intrygująca reklama,mała
+pl,184,dobra reklama,kiribati,intrygująca reklama,duża
+pl,1,dobra reklama,tui,intrygująca reklama,mała
+pl,69,dobra reklama,wakacje.pl,intrygująca reklama,duża
+pl,13,dobra reklama,wakacje.pl,intrygująca reklama,mała
+pl,65,intrygująca reklama,dreamtours,dobra reklama,duża
+pl,14,intrygująca reklama,dreamtours,dobra reklama,mała
+pl,20,intrygująca reklama,kiribati,dobra reklama,mała
+pl,4,intrygująca reklama,tui,dobra reklama,mała
+pl,195,intrygująca reklama,wakacje.pl,dobra reklama,duża
+pl,20,intrygująca reklama,wakacje.pl,dobra reklama,mała
+pl,120,intrygująca reklama,dreamtours,intrygująca reklama,duża
+pl,15,intrygująca reklama,dreamtours,intrygująca reklama,mała
+pl,120,intrygująca reklama,kiribati,intrygująca reklama,duża
+pl,40,intrygująca reklama,kiribati,intrygująca reklama,mała
+pl,356,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+pl,39,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+pl,243,spam,dreamtours,spam,duża
+pl,238,spam,dreamtours,spam,mała
+pl,294,spam,itaka,spam,mała
+pl,59,spam,tui,spam,duża
+pl,47,spam,tui,spam,mała
+pl,254,spam,wakacje.pl,spam,duża
+pl,109,spam,wakacje.pl,spam,mała
+pt,5,dobra reklama,dreamtours,dobra reklama,duża
+pt,2,dobra reklama,dreamtours,dobra reklama,mała
+pt,8,dobra reklama,kiribati,dobra reklama,duża
+pt,3,dobra reklama,wakacje.pl,dobra reklama,duża
+pt,1,dobra reklama,wakacje.pl,dobra reklama,mała
+pt,2,dobra reklama,kiribati,intrygująca reklama,duża
+pt,1,dobra reklama,wakacje.pl,intrygująca reklama,duża
+pt,1,intrygująca reklama,dreamtours,dobra reklama,mała
+pt,1,intrygująca reklama,kiribati,intrygująca reklama,duża
+pt,2,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+pt,1,spam,dreamtours,spam,duża
+pt,6,spam,dreamtours,spam,mała
+pt,4,spam,itaka,spam,mała
+ro,1,dobra reklama,dreamtours,dobra reklama,duża
+ro,2,dobra reklama,kiribati,dobra reklama,duża
+ro,1,dobra reklama,wakacje.pl,dobra reklama,duża
+ro,2,spam,dreamtours,spam,duża
+ro,3,spam,wakacje.pl,spam,duża
+ru,26,dobra reklama,dreamtours,dobra reklama,duża
+ru,5,dobra reklama,dreamtours,dobra reklama,mała
+ru,57,dobra reklama,kiribati,dobra reklama,duża
+ru,3,dobra reklama,kiribati,dobra reklama,mała
+ru,1,dobra reklama,tui,dobra reklama,mała
+ru,17,dobra reklama,wakacje.pl,dobra reklama,duża
+ru,13,dobra reklama,wakacje.pl,dobra reklama,mała
+ru,7,dobra reklama,kiribati,intrygująca reklama,duża
+ru,3,dobra reklama,wakacje.pl,intrygująca reklama,duża
+ru,3,intrygująca reklama,dreamtours,dobra reklama,duża
+ru,2,intrygująca reklama,wakacje.pl,dobra reklama,duża
+ru,1,intrygująca reklama,wakacje.pl,dobra reklama,mała
+ru,8,intrygująca reklama,dreamtours,intrygująca reklama,duża
+ru,1,intrygująca reklama,dreamtours,intrygująca reklama,mała
+ru,2,intrygująca reklama,kiribati,intrygująca reklama,duża
+ru,7,intrygująca reklama,kiribati,intrygująca reklama,mała
+ru,22,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+ru,1,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+ru,31,spam,dreamtours,spam,duża
+ru,23,spam,dreamtours,spam,mała
+ru,39,spam,itaka,spam,mała
+ru,5,spam,tui,spam,duża
+ru,2,spam,tui,spam,mała
+ru,17,spam,wakacje.pl,spam,duża
+ru,9,spam,wakacje.pl,spam,mała
+sv,163,dobra reklama,dreamtours,dobra reklama,duża
+sv,42,dobra reklama,dreamtours,dobra reklama,mała
+sv,380,dobra reklama,kiribati,dobra reklama,duża
+sv,36,dobra reklama,kiribati,dobra reklama,mała
+sv,6,dobra reklama,tui,dobra reklama,mała
+sv,177,dobra reklama,wakacje.pl,dobra reklama,duża
+sv,92,dobra reklama,wakacje.pl,dobra reklama,mała
+sv,19,dobra reklama,kiribati,intrygująca reklama,duża
+sv,19,dobra reklama,wakacje.pl,intrygująca reklama,duża
+sv,3,dobra reklama,wakacje.pl,intrygująca reklama,mała
+sv,14,intrygująca reklama,dreamtours,dobra reklama,duża
+sv,6,intrygująca reklama,dreamtours,dobra reklama,mała
+sv,6,intrygująca reklama,kiribati,dobra reklama,mała
+sv,25,intrygująca reklama,wakacje.pl,dobra reklama,duża
+sv,10,intrygująca reklama,wakacje.pl,dobra reklama,mała
+sv,40,intrygująca reklama,dreamtours,intrygująca reklama,duża
+sv,24,intrygująca reklama,dreamtours,intrygująca reklama,mała
+sv,108,intrygująca reklama,kiribati,intrygująca reklama,duża
+sv,25,intrygująca reklama,kiribati,intrygująca reklama,mała
+sv,97,intrygująca reklama,wakacje.pl,intrygująca reklama,duża
+sv,33,intrygująca reklama,wakacje.pl,intrygująca reklama,mała
+sv,203,spam,dreamtours,spam,duża
+sv,179,spam,dreamtours,spam,mała
+sv,194,spam,itaka,spam,mała
+sv,21,spam,tui,spam,duża
+sv,26,spam,tui,spam,mała
+sv,146,spam,wakacje.pl,spam,duża
+sv,76,spam,wakacje.pl,spam,mała

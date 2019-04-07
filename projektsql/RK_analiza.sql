@@ -201,10 +201,9 @@ jezyk
 order by 6 desc
 ;
 
--- Analiza - w jakim stopniu partner wybierając czy przypisać lead dla danego wniosku zwraca uwagę na język
--
+-- Analiza - w jakim stopniu partner wybierając czy przypisać lead dla danego
+-- wniosku zwraca uwagę na język
 
--- dopracowac
 select
     w.jezyk,
     md.partner,
@@ -218,13 +217,81 @@ left join m_dane_od_partnerow md on md.id = ml.id
 group by
     w.jezyk,
     md.partner
-order by 5 desc
+order by 1 desc
 ;
 
--- Analiza - w jakim stopniu partner wybierając kampanię dla danego wniosku zwraca uwagę na język
+-- Analiza - w jakim stopniu partner wybierając kampanię dla danego
+-- wniosku zwraca uwagę na język
+--ctr
+select
+jezyk,
+partner,
+sum(spam) as spam,
+sum(dobra_reklama) as dobra_reklama,
+sum(intrygujaca_reklama) as intrygujaca_reklama,
+100.0*sum(spam)/ (sum(spam)+sum(dobra_reklama)+sum(intrygujaca_reklama)) as procent_spam,
+100.0*sum(intrygujaca_reklama)/ (sum(spam)+sum(dobra_reklama)+sum(intrygujaca_reklama)) as procent_intrygujaca_reklama
+from
+(
+select
+jezyk,
+ctr_opis,
+partner,
+case when ctr_opis = 'spam' then sum(liczba_wnioskow) else 0 end as spam,
+case when ctr_opis = 'dobra reklama' then sum(liczba_wnioskow) else 0 end as dobra_reklama,
+case when ctr_opis = 'intrygująca reklama' then sum(liczba_wnioskow) else 0 end as intrygujaca_reklama
+from
+(
+select
+    w.jezyk,
+    count (w.id) as liczba_wnioskow,
+    mks.ctr_opis,
+    md.partner
+from wnioski w
+join m_lead ml on ml.id_wniosku = w.id
+join m_dane_od_partnerow md on md.id = ml.id
+join m_lead_kampania mlk on ml.id = mlk.id_lead
+join m_kampanie_statystyki mks on mlk.id_kampania = mks.id_kampanii
 
 
+group by
+    w.jezyk,
+    mks.ctr_opis,
+    md.partner
+) abc
+group by
+jezyk,
+ctr_opis,
+partner
+) xyz
+group by
+jezyk,
+partner
+order by 6 desc
+;
 
+-- Zrzut danych do tableau
+
+select
+    w.jezyk,
+    count (w.id) as liczba_wnioskow,
+    mks.ctr_opis,
+    md.partner,
+    mks.open_rate_opis,
+    mks.wielkosc_kampanii
+from wnioski w
+join m_lead ml on ml.id_wniosku = w.id
+join m_dane_od_partnerow md on md.id = ml.id
+join m_lead_kampania mlk on ml.id = mlk.id_lead
+join m_kampanie_statystyki mks on mlk.id_kampania = mks.id_kampanii
+
+group by
+    w.jezyk,
+    mks.ctr_opis,
+    mks.open_rate_opis,
+    md.partner,
+    mks.wielkosc_kampanii
+;
 
 
 
@@ -268,18 +335,7 @@ select distinct status from m_kampanie;
 --nowa
 
 
-
-
-select w.id,  w.jezyk,  avg (extract (day from ml.data_wysylki - w.data_utworzenia)) as liczba_dni
-from wnioski w
-left join m_lead ml on ml.id_wniosku = w.id
-where jezyk = 'ro'
-group by w.jezyk, w.id
-;
-
-
-
--- data wysyłki a data utworzenia wniosku -- dla ponizszego przykladu wszytskie 4 kampanie
+-- testowy - dla ponizszego przykladu wszytskie 4 kampanie
 select *
 from wnioski w
 left join m_lead ml on ml.id_wniosku = w.id
