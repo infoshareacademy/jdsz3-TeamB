@@ -41,7 +41,8 @@ with czas_realizacji as(
 select jezyk,
        count(wniosek),
        AVG(dni_realziacji) as sredni_czas_realizacji_dni,
-       AVG(dni_realziacji)*24.0 as sredni_czas_realizacji_godziny
+       AVG(dni_realziacji)*24.0 as sredni_czas_realizacji_godziny,
+       AVG(dni_realziacji) / percentile_disc(0.5) within group ( order by dni_realziacji )::float as wspolczynnik_avg_mediana
 from czas_realizacji
 group by jezyk
 order by sredni_czas_realizacji_dni DESC ;
