@@ -1,17 +1,21 @@
 -- Min, max , q1, mediana oraz q3 dla wniosków wypłaconych per pasażer
 
+with kwoty as (
+  select *, kwota_rekompensaty / liczba_pasazerow as kwota_pasazer
+  from wnioski
+  where kwota_rekompensaty / liczba_pasazerow > 0
+)
 select jezyk, count(1) as liczba_wnioskow_wyplaconych,
-       min(kwota_rekompensaty/liczba_pasazerow) as min_kwota_per_pasazer,
-       percentile_disc(0.25) within group (order by (kwota_rekompensaty/liczba_pasazerow)) as q1_per_pasazer,
-       percentile_disc(0.5) within group (order by (kwota_rekompensaty/liczba_pasazerow)) as mediana_per_pasazer,
-       percentile_disc(0.75) within group (order by (kwota_rekompensaty/liczba_pasazerow)) as q3_per_pasazer,
-       max(kwota_rekompensaty/liczba_pasazerow) as max_kwota_per_pasazer
-from wnioski
+       min(kwota_pasazer) as min_kwota_per_pasazer,
+       percentile_disc(0.25) within group (order by (kwota_pasazer)) as q1_per_pasazer,
+       percentile_disc(0.5) within group (order by (kwota_pasazer)) as mediana_per_pasazer,
+       percentile_disc(0.75) within group (order by (kwota_pasazer)) as q3_per_pasazer,
+       max(kwota_pasazer) as max_kwota_per_pasazer
+from kwoty
 where stan_wniosku like 'wypl%'
-and kwota_rekompensaty > 0
+and jezyk not in ('no', 'cs', 'tr', 'ro', 'el')
 group by 1
-having count(1) > 10
-order by 5 desc;
+order by 1;
 
 -- Procent wniosków, gdzie kwota wypłacona różni się od wnioskowanej
 
@@ -30,8 +34,8 @@ with rozne_wnioski as (
 )
 select *
 from rozne_wnioski
-where proc_rozniacych_sie_wnioskow > 0
-order by 4;
+where jezyk not in ('no', 'cs', 'tr', 'ro', 'el')
+order by 1;
 
 -- Procent wniosków wypłaconych, odrzuconych oraz oczekujących na decyzję wg. języka
 
@@ -91,6 +95,7 @@ order by 4
      jezyki as (
        select distinct jezyk
        from wnioski
+       where jezyk not in ('no', 'cs', 'tr', 'ro', 'el')
      )
 select j.jezyk, w.liczba_wnioskow, w.wnioski_wyplacone, w.procent_wnioskow_wyplaconych,
        o.wnioski_odrzucone, o.procent_wnioskow_odrzuconych,
@@ -98,7 +103,8 @@ select j.jezyk, w.liczba_wnioskow, w.wnioski_wyplacone, w.procent_wnioskow_wypla
 from jezyki j
 join wyplacone w on j.jezyk = w.jezyk
 join odrzucone o on j.jezyk = o.jezyk
-join oczekujace o2 on j.jezyk = o2.jezyk;
+join oczekujace o2 on j.jezyk = o2.jezyk
+order by 1;
 
 
 -- Średni czas oczekiwania na wypłatę rekompensaty
@@ -115,7 +121,8 @@ with sredni_czas as (
 )
 select jezyk, round(sredni_czas_oczekiwania_na_wyplate_rekompensaty,0) as sredni_czas_oczekiwania_na_wyplate_rekompensaty_w_dniach
 from sredni_czas
-order by 2 desc;
+where jezyk not in ('no', 'cs', 'tr', 'ro', 'el')
+order by 1;
 
 -- Procent wniosków odrzuconych wg. stanu i języka
 
@@ -133,13 +140,11 @@ with wnioski_wszystkie as (
        group by 1, 2
        order by 1, 2
      )
-select wn.stan_wniosku, wn.jezyk, wn.liczba_wnioskow,
+select wn.stan_wniosku, wn.jezyk as jezyk, wn.liczba_wnioskow,
        round(100 * ((wn.liczba_wnioskow)::numeric / ww.liczba_wszystkich_wnioskow),2)
          as procent_wnioskow_odrzuconych
 from wnioski_niewyplacone wn
-full join wnioski_wszystkie ww on wn.jezyk = ww.jezyk
+join wnioski_wszystkie ww on wn.jezyk = ww.jezyk
 where wn.jezyk is not null
-and wn.liczba_wnioskow > 9
-order by 1, 4, 2;
-
-
+and wn.jezyk not in ('no', 'cs', 'tr', 'ro', 'el')
+order by 1, 2;
