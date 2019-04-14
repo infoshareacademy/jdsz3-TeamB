@@ -4,8 +4,10 @@
 ### Analiza danych ze względu na język
 
 
+
 #### Baza danych
-###### AirHelp
+##### AirHelp
+
 
 #### DEFINITION OF DONE
 - przygotowanie i oczyszczenie danych do analizy,
@@ -15,7 +17,8 @@
 - umieszczenie skryptów w repozytorium
 - wizualizacja wnioskow
 
-###### Osoby winne popełnienia owego projektu:
+
+##### Osoby winne popełnienia owego projektu:
 - Rafał Kazubowski
 - Mateusz Kozak
 - Patryk Kerlin
