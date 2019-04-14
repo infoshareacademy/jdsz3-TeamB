@@ -48,7 +48,7 @@ group by
     status
 );
 
-
+select * from m_kampanie_statystyki;
 -- Zapytania pomocnicze w celu stworzenia grup dla wskaźników opisujących kampanie
 
     select
@@ -204,6 +204,8 @@ order by 6 desc
 -- Analiza - w jakim stopniu partner wybierając czy przypisać lead dla danego
 -- wniosku zwraca uwagę na język
 
+
+
 select
     w.jezyk,
     md.partner,
@@ -342,6 +344,8 @@ left join m_lead ml on ml.id_wniosku = w.id
 left join m_dane_od_partnerow md on md.id = ml.id
 left join m_lead_kampania mlk on ml.id = mlk.id_lead
 left join m_kampanie mk on mlk.id_kampania = mk.id
+left join podroze po on po.id_wniosku = w.id
+left join szczegoly_podrozy  sz on sz.id_podrozy = po.id
 --left join m_email me on mk.id = me.id_kampanii
 where --ml.data_wysylki < mk.data_kampanii
 w.id = '2096459'  --and id_kampanii = '844'
