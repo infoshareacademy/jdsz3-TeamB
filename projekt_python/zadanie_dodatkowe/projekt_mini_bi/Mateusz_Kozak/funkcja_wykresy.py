@@ -261,7 +261,8 @@ def wykresy(data_set, **kwargs):
                                 print(f"data_set y: {data_set[i][0][-1][j]}")
                                 print(f"size_maker: {size_maker}")
                                 print(f"marker: {marker_from_list}")
-                                scatter_plot(data_set[i][0][0][j], data_set[i][0][-1][j], color=colors_list[j], marker=marker_from_list, s=size_maker*100)
+                                scatter_plot(data_set[i][0][0][j], data_set[i][0][-1][j], color=colors_list[j], marker=marker_from_list,
+                                             s=size_maker*100, alpha=0.5)
                                 try:
                                     plt.legend(input(data_set[i][0][0][j].columns), loc=2)
                                 except AttributeError:
