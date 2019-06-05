@@ -1,0 +1,23 @@
+1 - Histogram matplotlib
+2 - Histogram seborn
+3 - Wykres pude³kowy
+4 - Wykres punktowy (nale¿y podaæ dane w postaci data = [data1--> os x,data2--> os y]
+5 - Wykres s³upkowy ( format danych -> [x_labels, y_lista_wartosci])
+6 - Wykres ko³owy (format danych data[i][0] = labels, data[i][1] = wartosci)
+7 - Histogram 2D (format danych -> data_set[i] = [x= data_set[i][0]  , y= data_set[i][1]])
+8 - Pair Plot (do pokazania korelacji miedzy podanymi danymi) data_set[i] = [data1, data2, data3 ...]
+9 - Wykres b¹belkowy -> [[[x1 -> lista, x2-->lista , x3-->lista], y --> lista], rozmiar kulek -->lista]
+0 - Koniec programu""")
+
+
+set_dancyh powinein wyg³¹daæ taK:
+
+data_set = [data1, data2...., data_n]
+gdzie data_n itp jest list¹!!
+oczywiscie mog¹ byæ listu w liscie np. wykres b¹blekowy:
+ data_n = [[[bars1,bars2, bars3], [bars4, bars5,bars6]], [bars7, bars8]]
+
+gdzie : [[bars1,bars2, bars3], [bars4, bars5,bars6]] wartosci x1,x2,x3 oraz y1,y2,y3
+[bars7, bars8] - dane ró¿nicuj¹ce wilekosc b¹belków
+
+
