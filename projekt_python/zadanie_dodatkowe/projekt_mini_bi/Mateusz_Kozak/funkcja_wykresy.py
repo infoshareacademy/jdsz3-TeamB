@@ -97,7 +97,7 @@ def pie_chart(labels, sizes, **kwargs):
     plt.pie(sizes, labels=labels, autopct=procent,explode=explode, shadow=True, startangle=270)
 
 def hist_2D(data, **kwargs):
-    ax = sb.jointplot(data[0], data[1])
+    ax = sb.jointplot(data[0], data[1], **kwargs)
     return ax
 
 def pair_plot(data):
