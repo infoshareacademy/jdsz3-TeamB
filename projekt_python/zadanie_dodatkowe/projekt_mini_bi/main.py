@@ -18,31 +18,55 @@ try:
         try:
             y = int(input("Wybierz numer funkcji aby wykonać obliczenia: "))
             if y == 1:
-                fs.f_sum("dimension","measure")
+                try:
+                    fs.f_sum("dimension","measure")
+                except KeyError:
+                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
             elif y == 2:
-                fs.f_min("dimension","measure")
+                try:
+                    fs.f_min("dimension","measure")
+                except KeyError:
+                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
             elif y == 3:
-                fs.f_max("dimension","measure")
+                try:
+                    fs.f_max("dimension","measure")
+                except KeyError:
+                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
             elif y == 4:
-                fs.f_mean("dimension","measure")
+                try:
+                    fs.f_mean("dimension","measure")
+                except KeyError:
+                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
             elif y == 5:
-                fs.f_median("dimension","measure")
+                try:
+                    fs.f_median("dimension","measure")
+                except KeyError:
+                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
             elif y == 6:
-                fs.f_var("dimension","measure")
+                try:
+                    fs.f_var("dimension","measure")
+                except KeyError:
+                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
             elif y == 7:
-                fs.f_std("dimension","measure")
+                try:
+                    fs.f_std("dimension","measure")
+                except KeyError:
+                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
             else:
-                print("Nie ma takiego modułu. Zakończyłeś pracę w programie.")
+                print("Nie ma takiej funkcji. Zakończyłeś pracę w programie.")
         except ValueError:
-            print("To nie jest poprawna wartość. Spróbuj jeszcze raz wpisująć cyfrę od 1 do 3")
+            print("To nie jest poprawna wartość. Spróbuj jeszcze raz wpisująć cyfrę od 1 do 7")
 
     # Wykresy
     elif x == 3:
         print("Jesteś w module 'Wykresy'")
 
     # Wyjście z programu
-    else:
+    elif x == 4:
         print("Zakończyłeś pracę w programie.")
+
+    else:
+        print("To nie jest poprawna wartość. Spróbuj jeszcze raz wpisująć cyfrę od 1 do 3")
 
 except ValueError:
     print("To nie jest poprawna wartość. Spróbuj jeszcze raz wpisująć cyfrę od 1 do 3")
