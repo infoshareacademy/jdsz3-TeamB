@@ -78,3 +78,4 @@ def f_std (dimension, measure):
     df_tab = df[[dimension, measure]]
     std = df_tab.groupby(dimension).agg(['std'])
     print(std)
+
