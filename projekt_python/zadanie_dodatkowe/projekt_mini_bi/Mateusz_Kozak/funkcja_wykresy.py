@@ -298,5 +298,5 @@ def wykresy(data_set, **kwargs):
             0 - Koniec programu""")
         wybieracz = input("\nJeżeli chcesz dalej ysować wykresy, wcisnij  opowiednia opcję: \n")
 
-#plots = wykresy(data_set)
+plots = wykresy(data_set)
 input("\nAby zakonczyc program wcisnij ENTER \n")
