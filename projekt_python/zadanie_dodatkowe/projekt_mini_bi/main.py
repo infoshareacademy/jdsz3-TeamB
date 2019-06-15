@@ -1,72 +1,49 @@
 import funkcje_statystyczne as fs
+import funkcja_wykresy as fw
+from msvcrt import getch
+import sys
 
 # Menu główne
-print("Witaj w programie Mini BI! \n -------Menu główne------- \n 1. Wybór zbioru danych \n 2. Funkcje statystyczne \n 3. Wykresy \n 4. Wyjście")
+print("\n Witaj w programie Mini BI! \n -------Menu główne------- \n 1. Funkcje statystyczne \n 2. Wykresy \n 3. Wyjście")
 try:
-    x = int(input("Wybierz numer modułu: "))
+    while True:
+        # Funkcje statystyczne
+        key = ord(getch())
+        if key == 49:
+            print("\n\n ---Funkcje statystyczne---")
+            print(" Wybierz jedną z funkcji: \n 1. suma \n 2. min  \n 3. max \n 4. średnia \n 5. mediana \n 6. wariancja \n 7. odchylenie standardowe")
+            while True:
+                key = ord(getch())
+                if key == 49:
+                    fs.f_sum()
+                    fs.koniec()
+                elif key == 50:
+                    fs.f_min()
+                    fs.koniec()
+                elif key == 51:
+                    fs.f_max()
+                    fs.koniec()
+                elif key == 52:
+                    fs.f_mean()
+                    fs.koniec()
+                elif key == 53:
+                    fs.f_median()
+                    fs.koniec()
+                elif key == 54:
+                    fs.f_var()
+                    fs.koniec()
+                elif key == 55:
+                    fs.f_std()
+                    fs.koniec()
+        # Wykresy
+        elif key == 50:
+             fw.wykresy()
 
-    # Menu modułu
-
-    # Wydobywanie rekordów z tabeli
-    if x == 1:
-        print("Jesteś w module 'Wybór zbioru danych'")
-
-    # Funkcje statystyczne
-    elif x == 2:
-        print("Jesteś w module 'Funkcje statystyczne'")
-        print("Dostępne funkcje to \n 1. suma \n 2. min  \n 3. max \n 4. średnia \n 5. mediana \n 6. wariancja \n 7. odchylenie standardowe")
-        try:
-            y = int(input("Wybierz numer funkcji aby wykonać obliczenia: "))
-            if y == 1:
-                try:
-                    fs.f_sum("dimension","measure")
-                except KeyError:
-                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
-            elif y == 2:
-                try:
-                    fs.f_min("dimension","measure")
-                except KeyError:
-                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
-            elif y == 3:
-                try:
-                    fs.f_max("dimension","measure")
-                except KeyError:
-                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
-            elif y == 4:
-                try:
-                    fs.f_mean("dimension","measure")
-                except KeyError:
-                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
-            elif y == 5:
-                try:
-                    fs.f_median("dimension","measure")
-                except KeyError:
-                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
-            elif y == 6:
-                try:
-                    fs.f_var("dimension","measure")
-                except KeyError:
-                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
-            elif y == 7:
-                try:
-                    fs.f_std("dimension","measure")
-                except KeyError:
-                    print("Nie ma takiej miary/wymiaru - wpisz dokładną nazwę spośród podanych.")
-            else:
-                print("Nie ma takiej funkcji. Zakończyłeś pracę w programie.")
-        except ValueError:
-            print("To nie jest poprawna wartość. Spróbuj jeszcze raz wpisująć cyfrę od 1 do 7")
-
-    # Wykresy
-    elif x == 3:
-        print("Jesteś w module 'Wykresy'")
-
-    # Wyjście z programu
-    elif x == 4:
-        print("Zakończyłeś pracę w programie.")
-
-    else:
-        print("To nie jest poprawna wartość. Spróbuj jeszcze raz wpisująć cyfrę od 1 do 3")
-
-except ValueError:
-    print("To nie jest poprawna wartość. Spróbuj jeszcze raz wpisująć cyfrę od 1 do 3")
+        # Wyjście z programu
+        elif key == 51:
+            sys.exit()
+except SystemExit:
+    pass
+except:
+    print("\n Ups... coś poszło nie tak. \n")
+    fs.koniec()
