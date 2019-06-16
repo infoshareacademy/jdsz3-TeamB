@@ -20,6 +20,7 @@
 - sformułowanie wniosków
 - umieszczenie skryptów w repozytorium
 - wizualizacja wnioskow
+
 &nbsp;
 &nbsp;
 &nbsp;
