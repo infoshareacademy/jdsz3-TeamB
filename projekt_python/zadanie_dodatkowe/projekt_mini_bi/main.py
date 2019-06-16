@@ -1,5 +1,5 @@
 import funkcje_statystyczne as fs
-import funkcja_wykresy as fw
+#import funkcja_wykresy as fw
 from msvcrt import getch
 import sys
 
@@ -35,9 +35,10 @@ try:
                 elif key == 55:
                     fs.f_std()
                     fs.koniec()
+
         # Wykresy
-        elif key == 50:
-             fw.wykresy()
+        #elif key == 50:
+        #    fw.wykresy()
 
         # Wyjście z programu
         elif key == 51:
