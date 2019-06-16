@@ -8,8 +8,12 @@
 ##### [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 
 
-###Zadanie dodatkowe:
-####Aplikacja dokonująca obliczeń oraz rysująca wykresy dla ww. bazy danych
+
+
+### Zadanie dodatkowe:
+#### Aplikacja dokonująca obliczeń oraz rysująca wykresy dla ww. bazy danych
+
+
 
 
 #### DEFINITION OF DONE
