@@ -1,12 +1,15 @@
 # **Projekt Python**
+
 &NewLine;
 &NewLine;
 ## Czynniki wpływające na wysokość zarobków
 ### Analiza bazy danych pracowników IBM
+
 &NewLine;
 &NewLine;
 #### Baza danych:
 ##### [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/pavansubhasht/ibm-hr-analytics-attrition-dataset)
+
 &NewLine;
 &NewLine;
 ### Zadanie dodatkowe:
