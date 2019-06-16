@@ -1,12 +1,15 @@
-# **Projekt SQL**
+# **Projekt Python**
 
-## Czy język wniosku ma wpływ na jego obsługę?
-### Analiza danych ze względu na język
+## Czynniki wpływające na wysokość zarobków
+### Analiza bazy danych pracowników IBM
 
 
+#### Baza danych:
+##### [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/pavansubhasht/ibm-hr-analytics-attrition-dataset)
 
-#### Baza danych
-##### AirHelp
+
+###Zadanie dodatkowe:
+####Aplikacja dokonująca obliczeń oraz rysująca wykresy dla ww. bazy danych
 
 
 #### DEFINITION OF DONE
