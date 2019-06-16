@@ -66,12 +66,13 @@ def f_sum ():
                 wartosc = int(val)
             miary_wycinek()
             measure = input(" Podaj nazwę miary: ")
+            print(" ")
             if measure != col:
                 df['Count'] = df.groupby(col)[col].transform(len)
                 try:
                     df2 = df[df[col] == wartosc]
                     if len(df2.index) == 0:
-                        print("\n Brak rekordów dla wartości: [", val, "]")
+                        print(" Brak rekordów dla wartości: [", val, "]")
                         raise ValueError
                 except ValueError:
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:1]]
@@ -79,7 +80,7 @@ def f_sum ():
                     zakres = df2['Count'].values[0]
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:zakres]]
                     print(" Najbliższa pasująca wartość to: [", col_val[0], "]")
-                    print(" Liczba rekordów dla wartości [", col_val[0], "] wynosi: [", zakres, "]")
+                print(" Liczba rekordów dla wartości [", df2.at[df2.index[0],col], "] wynosi: [", len(df2.index), "]")
                 df_row = df2.drop('Count', axis=1)
                 df_tab = df_row[[col, measure]]
                 sum = df_tab.groupby(col).agg(['sum'])
@@ -118,12 +119,13 @@ def f_max ():
                 wartosc = int(val)
             miary_wycinek()
             measure = input(" Podaj nazwę miary: ")
+            print(" ")
             if measure != col:
                 df['Count'] = df.groupby(col)[col].transform(len)
                 try:
                     df2 = df[df[col] == wartosc]
                     if len(df2.index) == 0:
-                        print("\n Brak rekordów dla wartości: [", val, "]")
+                        print(" Brak rekordów dla wartości: [", val, "]")
                         raise ValueError
                 except ValueError:
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:1]]
@@ -131,7 +133,7 @@ def f_max ():
                     zakres = df2['Count'].values[0]
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:zakres]]
                     print(" Najbliższa pasująca wartość to:", col_val)
-                    print(" Liczba rekordów dla wartości", col_val, "wynosi: [", zakres, "]")
+                print(" Liczba rekordów dla wartości [", df2.at[df2.index[0], col], "] wynosi: [", len(df2.index), "]")
                 df_row = df2.drop('Count', axis=1)
                 df_tab = df_row[[col, measure]]
                 max = df_tab.groupby(col).agg(['max'])
@@ -170,12 +172,13 @@ def f_min ():
                 wartosc = int(val)
             miary_wycinek()
             measure = input(" Podaj nazwę miary: ")
+            print(" ")
             if measure != col:
                 df['Count'] = df.groupby(col)[col].transform(len)
                 try:
                     df2 = df[df[col] == wartosc]
                     if len(df2.index) == 0:
-                        print("\n Brak rekordów dla wartości: [", val, "]")
+                        print(" Brak rekordów dla wartości: [", val, "]")
                         raise ValueError
                 except ValueError:
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:1]]
@@ -183,7 +186,7 @@ def f_min ():
                     zakres = df2['Count'].values[0]
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:zakres]]
                     print(" Najbliższa pasująca wartość to:", col_val)
-                    print(" Liczba rekordów dla wartości", col_val, "wynosi: [", zakres, "]")
+                print(" Liczba rekordów dla wartości [", df2.at[df2.index[0],col], "] wynosi: [", len(df2.index), "]")
                 df_row = df2.drop('Count', axis=1)
                 df_tab = df_row[[col, measure]]
                 min = df_tab.groupby(col).agg(['min'])
@@ -222,12 +225,13 @@ def f_mean():
                 wartosc = int(val)
             miary_wycinek()
             measure = input(" Podaj nazwę miary: ")
+            print(" ")
             if measure != col:
                 df['Count'] = df.groupby(col)[col].transform(len)
                 try:
                     df2 = df[df[col] == wartosc]
                     if len(df2.index) == 0:
-                        print("\n Brak rekordów dla wartości: [", val, "]")
+                        print(" Brak rekordów dla wartości: [", val, "]")
                         raise ValueError
                 except ValueError:
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:1]]
@@ -235,7 +239,7 @@ def f_mean():
                     zakres = df2['Count'].values[0]
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:zakres]]
                     print(" Najbliższa pasująca wartość to:", col_val)
-                    print(" Liczba rekordów dla wartości", col_val, "wynosi: [", zakres, "]")
+                print(" Liczba rekordów dla wartości [", df2.at[df2.index[0],col], "] wynosi: [", len(df2.index), "]")
                 df_row = df2.drop('Count', axis=1)
                 df_tab = df_row[[col, measure]]
                 mean = df_tab.groupby(col).agg(['mean'])
@@ -274,12 +278,13 @@ def f_median():
                 wartosc = int(val)
             miary_wycinek()
             measure = input(" Podaj nazwę miary: ")
+            print(" ")
             if measure != col:
                 df['Count'] = df.groupby(col)[col].transform(len)
                 try:
                     df2 = df[df[col] == wartosc]
                     if len(df2.index) == 0:
-                        print("\n Brak rekordów dla wartości: [", val, "]")
+                        print(" Brak rekordów dla wartości: [", val, "]")
                         raise ValueError
                 except ValueError:
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:1]]
@@ -287,7 +292,7 @@ def f_median():
                     zakres = df2['Count'].values[0]
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:zakres]]
                     print(" Najbliższa pasująca wartość to:", col_val)
-                    print(" Liczba rekordów dla wartości", col_val, "wynosi: [", zakres, "]")
+                print(" Liczba rekordów dla wartości [", df2.at[df2.index[0],col], "] wynosi: [", len(df2.index), "]")
                 df_row = df2.drop('Count', axis=1)
                 df_tab = df_row[[col, measure]]
                 median = df_tab.groupby(col).agg(['median'])
@@ -326,12 +331,13 @@ def f_var ():
                 wartosc = int(val)
             miary_wycinek()
             measure = input(" Podaj nazwę miary: ")
+            print(" ")
             if measure != col:
                 df['Count'] = df.groupby(col)[col].transform(len)
                 try:
                     df2 = df[df[col] == wartosc]
                     if len(df2.index) == 0:
-                        print("\n Brak rekordów dla wartości: [", val, "]")
+                        print(" Brak rekordów dla wartości: [", val, "]")
                         raise ValueError
                 except ValueError:
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:1]]
@@ -339,7 +345,7 @@ def f_var ():
                     zakres = df2['Count'].values[0]
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:zakres]]
                     print(" Najbliższa pasująca wartość to:", col_val)
-                    print(" Liczba rekordów dla wartości", col_val, "wynosi: [", zakres, "]")
+                print(" Liczba rekordów dla wartości [", df2.at[df2.index[0],col], "] wynosi: [", len(df2.index), "]")
                 df_row = df2.drop('Count', axis=1)
                 df_tab = df_row[[col, measure]]
                 var = df_tab.groupby(col).agg(['var'])
@@ -378,12 +384,13 @@ def f_std ():
                 wartosc = int(val)
             miary_wycinek()
             measure = input(" Podaj nazwę miary: ")
+            print(" ")
             if measure != col:
                 df['Count'] = df.groupby(col)[col].transform(len)
                 try:
                     df2 = df[df[col] == wartosc]
                     if len(df2.index) == 0:
-                        print("\n Brak rekordów dla wartości: [", val, "]")
+                        print(" Brak rekordów dla wartości: [", val, "]")
                         raise ValueError
                 except ValueError:
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:1]]
@@ -391,7 +398,7 @@ def f_std ():
                     zakres = df2['Count'].values[0]
                     df2 = df.iloc[(df[col] - wartosc).abs().argsort()[:zakres]]
                     print(" Najbliższa pasująca wartość to:", col_val)
-                    print(" Liczba rekordów dla wartości", col_val, "wynosi: [", zakres, "]")
+                print(" Liczba rekordów dla wartości [", df2.at[df2.index[0],col], "] wynosi: [", len(df2.index), "]")
                 df_row = df2.drop('Count', axis=1)
                 df_tab = df_row[[col, measure]]
                 std = df_tab.groupby(col).agg(['std'])
