@@ -11,6 +11,7 @@
 &nbsp;
 ### Zadanie dodatkowe:
 #### Aplikacja dokonująca obliczeń oraz rysująca wykresy dla ww. bazy danych
+#### (uruchamiamy ją plikiem program.bat, wymaga pythona dodanego do PATH)
 &nbsp;
 &nbsp;
 #### DEFINITION OF DONE
