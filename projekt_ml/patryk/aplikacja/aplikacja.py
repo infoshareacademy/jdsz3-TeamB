@@ -29,6 +29,9 @@ class Main(tk.Frame):
         tk.Label(self, text=' ', font=large_font).grid(row=1, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=2, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=3, sticky='nsew')
+        tk.Label(self, text=' ', font=large_font).grid(row=4, sticky='nsew')
+        tk.Label(self, text=' ', font=large_font).grid(row=5, sticky='nsew')
+        tk.Label(self, text=' ', font=large_font).grid(row=6, sticky='nsew')
         tk.Button(self, text='Nowy klient', font=font,
                   command=lambda: master.switch_frame(New)).grid(row=4, sticky='nsew')
         tk.Button(self, text='Obecny klient', font=font,
@@ -56,7 +59,10 @@ class New(tk.Frame):
         tk.Label(self, text=' ', font=large_font).grid(row=17, columnspan=3, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=12, column=0, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=13, column=0, sticky='nsew')
-        tk.Button(self, text='Main menu', font=font,
+        tk.Label(self, text=' ', font=large_font).grid(row=15, column=0, sticky='nsew')
+        tk.Label(self, text=' ', font=large_font).grid(row=16, column=0, sticky='nsew')
+        tk.Label(self, text=' ', font=large_font).grid(row=18, column=0, sticky='nsew')
+        tk.Button(self, text='Menu główne', font=font,
                   command=lambda: master.switch_frame(Main)).grid(row=18, columnspan=3, sticky='nsew')
         tk.Button(self, text='Reset', font=font,
                   command=lambda: self.reset(master)).grid(row=16, column=0, sticky='nsew')
@@ -151,7 +157,8 @@ class New(tk.Frame):
         income_validator = self.register(self.income_validation)
         income_label = tk.Label(self, text='Zarobki:', font=font)
         income_label.grid(row=2, column=0)
-        self.income_entry = tk.Entry(self, bd=5, validate='key', validatecommand=(income_validator, '%P'))
+        self.income_entry = tk.Entry(self, bd=3, validate='key', font=font, width=10,
+                                     validatecommand=(income_validator, '%P'))
         self.income_entry.grid(row=3, column=0)
         self.income_entry.focus_set()
         self.income_entry.bind('<Return>', self.push_income)
@@ -172,9 +179,7 @@ class New(tk.Frame):
         try:
             if income == '':
                 return True
-            elif float(income) and len(income) < 10:
-                return True
-            elif int(income) and len(income) < 7:
+            elif int(income) and len(income) <= 7:
                 return True
             else:
                 raise ValueError
@@ -186,7 +191,8 @@ class New(tk.Frame):
         age_validator = self.register(self.age_validation)
         age_label = tk.Label(self, text='Wiek:', font=font)
         age_label.grid(row=2, column=1)
-        self.age_entry = tk.Entry(self, bd=5, validate='key', validatecommand=(age_validator, '%P'))
+        self.age_entry = tk.Entry(self, bd=3, validate='key', font=font, width=10,
+                                  validatecommand=(age_validator, '%P'))
         self.age_entry.grid(row=3, column=1)
         self.age_entry.focus()
         self.age_entry.bind('<Return>', self.push_age)
@@ -219,7 +225,8 @@ class New(tk.Frame):
         education_validator = self.register(self.education_validation)
         education_label = tk.Label(self, text='Lata nauki:', font=font)
         education_label.grid(row=2, column=2)
-        self.education_entry = tk.Entry(self, bd=5, validate='key', validatecommand=(education_validator, '%P'))
+        self.education_entry = tk.Entry(self, bd=3, validate='key', font=font, width=10,
+                                        validatecommand=(education_validator, '%P'))
         self.education_entry.grid(row=3, column=2)
         self.education_entry.focus()
         self.education_entry.bind('<Return>', self.push_education)
@@ -438,6 +445,14 @@ class New(tk.Frame):
     def show_rating(self):
         rating_label = tk.Label(self, text='Rating:  ', font=font)
         rating_label.grid(row=12, column=1, rowspan=2, sticky='e')
+        self.rating_color = tk.LabelFrame(self, relief='raised', font=font)
+        self.rating_color.grid(row=12, column=2, rowspan=2, sticky='nsew')
+        self.rating_color_text = tk.Label(self.rating_color, text='0', font=large_font)
+        self.rating_color_text.pack(expand=True, fill="none")
+
+    def show_rating_change(self):
+        self.rating_color.destroy()
+        self.rating_color_text.destroy()
         if self.rating <= 274:
             bg_color = 'red'
             self.rating_y = 0
@@ -448,16 +463,10 @@ class New(tk.Frame):
             bg_color = 'green'
             self.rating_y = 2
         self.new_x_limit[0][8] = self.rating_y
-        rating_text = self.rating
-        self.rating_color = tk.LabelFrame(self, bg=bg_color, relief='raised', font=font)
+        self.rating_color = tk.LabelFrame(self, relief='raised', font=font, bg=bg_color)
         self.rating_color.grid(row=12, column=2, rowspan=2, sticky='nsew')
-        self.rating_color_text = tk.Label(self.rating_color, bg=bg_color, text=rating_text, font=large_font)
+        self.rating_color_text = tk.Label(self.rating_color, text=self.rating, font=large_font, bg=bg_color)
         self.rating_color_text.pack(expand=True, fill="none")
-
-    def show_rating_change(self):
-        self.rating_color.destroy()
-        self.rating_color_text.destroy()
-        self.show_rating()
         self.predict_limit()
 
     def predict_limit(self):
@@ -472,6 +481,14 @@ class New(tk.Frame):
     def show_limit(self):
         limit_label = tk.Label(self, text='Limit:  ', font=font)
         limit_label.grid(row=15, column=1, rowspan=2, sticky='e')
+        self.limit_color = tk.LabelFrame(self, relief='raised', font=font)
+        self.limit_color.grid(row=15, column=2, rowspan=2, sticky='nsew')
+        self.limit_color_text = tk.Label(self.limit_color, text='0', font=large_font)
+        self.limit_color_text.pack(expand=True, fill="none")
+
+    def show_limit_change(self):
+        self.limit_color.destroy()
+        self.limit_color_text.destroy()
         if self.rating_y == 0:
             limit_text = 0
         else:
@@ -480,11 +497,6 @@ class New(tk.Frame):
         self.limit_color.grid(row=15, column=2, rowspan=2, sticky='nsew')
         self.limit_color_text = tk.Label(self.limit_color, text=limit_text, font=large_font)
         self.limit_color_text.pack(expand=True, fill="none")
-
-    def show_limit_change(self):
-        self.limit_color.destroy()
-        self.limit_color_text.destroy()
-        self.show_limit()
         self.check_save_button()
 
 
