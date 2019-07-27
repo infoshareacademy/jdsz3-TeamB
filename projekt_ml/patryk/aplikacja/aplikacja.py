@@ -50,6 +50,7 @@ class Main(tk.Frame):
 class New(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
+        tk.Frame.focus_set(self)
         tk.Label(self, text='Nowy klient', font=large_font).grid(row=0, columnspan=3)
         tk.Label(self, text=' ', font=large_font).grid(row=1, columnspan=3, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=4, columnspan=3, sticky='nsew')
@@ -62,10 +63,9 @@ class New(tk.Frame):
         tk.Label(self, text=' ', font=large_font).grid(row=15, column=0, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=16, column=0, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=18, column=0, sticky='nsew')
-        tk.Button(self, text='Menu główne', font=font,
+        tk.Button(self, text='Menu główne (ESC)', font=font,
                   command=lambda: master.switch_frame(Main)).grid(row=18, columnspan=3, sticky='nsew')
-        tk.Button(self, text='Reset', font=font,
-                  command=lambda: self.reset(master)).grid(row=16, column=0, sticky='nsew')
+        tk.Button(self, text='Reset (F6)', font=font, command=lambda: self.reset(master)).grid(row=16, column=0, sticky='nsew')
         self.income = 0
         self.age = 0
         self.education = 0
@@ -77,6 +77,12 @@ class New(tk.Frame):
         self.new_x_rating = [[0.0, 0, 0, 0, 0, 0, 0]]
         self.limit = 0
         self.new_x_limit = [[0.0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        self.popup_count = 0
+        self.rating_count = 0
+        tk.Frame.bind_all(self, sequence='<F4>', func=lambda x: self.predict_rating())
+        tk.Frame.bind_all(self, sequence='<F5>', func=lambda x: self.save_file())
+        tk.Frame.bind_all(self, sequence='<F6>', func=lambda x: self.reset(master))
+        tk.Frame.bind_all(self, sequence='<Escape>', func=lambda x: master.switch_frame(Main))
         self.count_button()
         self.save_button()
         self.get_income()
@@ -93,48 +99,56 @@ class New(tk.Frame):
         if self.income != 0 and self.age != 0 and self.education != 0 and self.sex != 2\
                 and self.student != 2 and self.martial != 2 and self.ethnicity != 0:
             self.save.destroy()
-            self.save = tk.Button(self, text='Zapisz', command=self.save_file, font=font)
+            self.save = tk.Button(self, text='Zapisz (F5)', command=self.save_file, font=font)
             self.save.grid(row=15, column=0, sticky='nsew')
 
     def save_file(self):
-        check_file = os.path.isfile('nowi_klienci.csv')
-        if not check_file:
-            self.client_id = 401
-        else:
-            my_data = genfromtxt('nowi_klienci.csv', delimiter=',')
-            last_id = my_data[-1][0]
-            self.client_id = int(last_id + 1)
-        nowi_klienci = open('nowi_klienci.csv', 'a', newline='')
-        columns = ['NumerKlienta', 'Income', 'Rating', 'Limit', 'Age', 'Education', 'GenderNumeric',
-                   'StudentNumeric', 'MarriedNumeric','EthnicityNumeric', 'Rating_Y']
-        writer = csv.DictWriter(nowi_klienci, fieldnames=columns)
-        if not check_file:
-            writer.writeheader()
-        writer.writerow({'NumerKlienta': self.client_id, 'Income': self.income, 'Rating': self.rating,
-                         'Limit': self.limit, 'Age': self.age,'Education': self.education,
-                         'GenderNumeric': self.sex, 'StudentNumeric': self.student,'MarriedNumeric': self.martial,
-                         'EthnicityNumeric': self.ethnicity, 'Rating_Y': self.rating_y})
-        self.popup_save_message()
+        if self.popup_count == 0:
+            check_file = os.path.isfile('nowi_klienci.csv')
+            if not check_file:
+                self.client_id = 401
+            else:
+                my_data = genfromtxt('nowi_klienci.csv', delimiter=',')
+                last_id = my_data[-1][0]
+                self.client_id = int(last_id + 1)
+            nowi_klienci = open('nowi_klienci.csv', 'a', newline='')
+            columns = ['NumerKlienta', 'Income', 'Rating', 'Limit', 'Age', 'Education', 'GenderNumeric',
+                       'StudentNumeric', 'MarriedNumeric','EthnicityNumeric', 'Rating_Y']
+            writer = csv.DictWriter(nowi_klienci, fieldnames=columns)
+            if not check_file:
+                writer.writeheader()
+            writer.writerow({'NumerKlienta': self.client_id, 'Income': self.income, 'Rating': self.rating,
+                             'Limit': self.limit, 'Age': self.age,'Education': self.education,
+                             'GenderNumeric': self.sex, 'StudentNumeric': self.student,'MarriedNumeric': self.martial,
+                             'EthnicityNumeric': self.ethnicity, 'Rating_Y': self.rating_y})
+            self.popup_save_message()
 
     def popup_save_message(self):
-        popup = tk.Toplevel()
-        tk.Label(popup).pack()
+        self.popup_count = 1
+        self.popup = tk.Toplevel()
+        tk.Label(self.popup).pack()
         popup_text = 'Nowy numer klienta:'
         popup_id = self.client_id
-        tk.Label(popup, text=popup_text, font=font).pack()
-        tk.Label(popup, text=popup_id, font=large_font).pack()
-        tk.Label(popup).pack()
-        tk.Button(popup, text='Close', font=font, command=lambda: popup.destroy()).pack()
-        tk.Label(popup).pack()
-        popup.geometry('250x160+10+10')
-        popup.resizable(False, False)
-        popup.title('Zapisano')
+        tk.Label(self.popup, text=popup_text, font=font).pack()
+        tk.Label(self.popup, text=popup_id, font=large_font).pack()
+        tk.Label(self.popup).pack()
+        close = tk.Button(self.popup, text='Close', font=font, command=lambda: self.popup.destroy())
+        close.pack()
+        close.focus_set()
+        close.bind('<Return>', self.popup_destroy)
+        tk.Label(self.popup).pack()
+        self.popup.geometry('250x160+10+10')
+        self.popup.resizable(False, False)
+        self.popup.title('Zapisano')
         self.save.destroy()
         self.save_button()
         #popup.iconbitmap(icon)
 
+    def popup_destroy(self, popup):
+        self.popup.destroy()
+
     def save_button(self):
-        self.save = tk.Button(self, text='Zapisz', font=font, state='disabled')
+        self.save = tk.Button(self, text='Zapisz (F5)', font=font, state='disabled')
         self.save.grid(row=15, column=0, sticky='nsew')
 
     def reset(self, master):
@@ -142,20 +156,21 @@ class New(tk.Frame):
         master.switch_frame(New)
 
     def count_button(self):
-        self.count = tk.Button(self, text='Oblicz rating\noraz limit', font=font, state='disabled')
+        self.count = tk.Button(self, text='Oblicz rating\noraz limit (F4)', font=font, state='disabled')
         self.count.grid(row=12, rowspan=2, column=0, sticky='nsew')
 
     def check_count_button(self):
         if self.income != 0 and self.age != 0 and self.education != 0 and self.sex != 2\
                 and self.student != 2 and self.martial != 2 and self.ethnicity != 0:
+            self.rating_count = 1
             self.count.destroy()
-            self.count_active = tk.Button(self, text='Oblicz rating\noraz limit', font=font,
+            self.count_active = tk.Button(self, text='Oblicz rating\noraz limit (F4)', font=font,
                                           command=self.predict_rating)
             self.count_active.grid(row=12, rowspan=2, column=0, sticky='nsew')
 
     def get_income(self):
         income_validator = self.register(self.income_validation)
-        income_label = tk.Label(self, text='Zarobki:', font=font)
+        income_label = tk.Label(self, text='Zarobki (pln):', font=font)
         income_label.grid(row=2, column=0)
         self.income_entry = tk.Entry(self, bd=3, validate='key', font=font, width=10,
                                      validatecommand=(income_validator, '%P'))
@@ -267,7 +282,6 @@ class New(tk.Frame):
         self.female_button.grid(row=7, column=0)
         self.male_button.bind('<Return>', self.select_male)
         self.female_button.bind('<Return>', self.select_female)
-
 
     def push_sex(self, event=None):
         self.push_income()
@@ -430,17 +444,18 @@ class New(tk.Frame):
         self.push_education()
 
     def predict_rating(self):
-        scaler_rating = load('svr_scaler_rating.joblib')
-        model_rating = load('svr_model_rating.joblib')
-        x_new_rating_scaler = scaler_rating.transform(self.new_x_rating)
-        y_new_rating = model_rating.predict(x_new_rating_scaler)
-        if self.income < 1000 or self.age < 18 or self.education < 8:
-            self.rating = 0
-        else:
-            self.rating = int(y_new_rating)
-        self.new_x_limit[0][1] = self.rating
-        self.show_rating_change()
-        print(self.rating)
+        if self.rating_count == 1:
+            scaler_rating = load('svr_scaler_rating.joblib')
+            model_rating = load('svr_model_rating.joblib')
+            x_new_rating_scaler = scaler_rating.transform(self.new_x_rating)
+            y_new_rating = model_rating.predict(x_new_rating_scaler)
+            if self.income < 1000 or self.age < 18 or self.education < 6:
+                self.rating = 0
+            else:
+                self.rating = int(y_new_rating)
+            self.new_x_limit[0][1] = self.rating
+            self.show_rating_change()
+            print(self.rating)
 
     def show_rating(self):
         rating_label = tk.Label(self, text='Rating:  ', font=font)
@@ -479,7 +494,7 @@ class New(tk.Frame):
         print(self.limit)
 
     def show_limit(self):
-        limit_label = tk.Label(self, text='Limit:  ', font=font)
+        limit_label = tk.Label(self, text='Maksymalny  \nlimit (pln):  ', font=font)
         limit_label.grid(row=15, column=1, rowspan=2, sticky='e')
         self.limit_color = tk.LabelFrame(self, relief='raised', font=font)
         self.limit_color.grid(row=15, column=2, rowspan=2, sticky='nsew')
