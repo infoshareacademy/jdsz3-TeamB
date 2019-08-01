@@ -215,10 +215,9 @@ class New(tk.Frame):
         if self.income_entry.get() == '':
             self.income = 0
         else:
-            self.income = float(self.income_entry.get())
-        print(self.income)
-        self.new_x_rating[0][0] = (float(self.income) / 100)
-        self.new_x_limit[0][0] = (float(self.income) / 100)
+            self.income = int(self.income_entry.get())
+        self.new_x_rating[0][0] = (self.income / 100)
+        self.new_x_limit[0][0] = (self.income / 100)
         self.check_count_button()
 
     def income_validation(self, income):
@@ -249,7 +248,6 @@ class New(tk.Frame):
             self.age = 0
         else:
             self.age = int(self.age_entry.get())
-        print(self.age)
         self.new_x_rating[0][1] = self.age
         self.new_x_limit[0][2] = self.age
         self.check_count_button()
@@ -282,7 +280,6 @@ class New(tk.Frame):
             self.education = 0
         else:
             self.education = int(self.education_entry.get())
-        print(self.education)
         self.new_x_rating[0][2] = self.education
         self.new_x_limit[0][3] = self.education
         self.check_count_button()
@@ -318,7 +315,6 @@ class New(tk.Frame):
         self.push_education()
         self.sex = int(self.sex_val.get())
         self.martial_sex()
-        print(self.sex)
         self.new_x_rating[0][3] = self.sex
         self.new_x_limit[0][4] = self.sex
         self.check_count_button()
@@ -353,7 +349,6 @@ class New(tk.Frame):
         self.push_age()
         self.push_education()
         self.student = int(self.student_val.get())
-        print(self.student)
         self.new_x_rating[0][4] = self.student
         self.new_x_limit[0][5] = self.student
         self.check_count_button()
@@ -409,7 +404,6 @@ class New(tk.Frame):
         self.push_age()
         self.push_education()
         self.martial = int(self.martial_val.get())
-        print(self.martial)
         self.new_x_rating[0][5] = self.martial
         self.new_x_limit[0][6] = self.martial
         self.check_count_button()
@@ -448,11 +442,9 @@ class New(tk.Frame):
         self.push_age()
         self.push_education()
         self.ethnicity = int(self.ethnicity_val.get())
-        print(self.ethnicity)
         self.new_x_rating[0][6] = self.ethnicity
         self.new_x_limit[0][7] = self.ethnicity
         self.check_count_button()
-        print(self.new_x_rating)
 
     def select_caucasian(self, caucasian_button):
         self.caucasian_button.invoke()
@@ -483,7 +475,6 @@ class New(tk.Frame):
                 self.rating = int(y_new_rating)
             self.new_x_limit[0][1] = self.rating
             self.show_rating_change()
-            print(self.rating)
 
     def show_rating(self):
         rating_label = tk.Label(self, text='Rating:  ', font=font)
@@ -518,7 +509,6 @@ class New(tk.Frame):
         y_new_limit = self.model_limit.predict(x_new_limit_scaler)
         self.limit = int(y_new_limit)
         self.show_limit_change()
-        print(self.limit)
 
     def show_limit(self):
         limit_label = tk.Label(self, text='Maksymalny  \nlimit (pln):  ', font=font)
@@ -595,6 +585,7 @@ class Current(tk.Frame):
     def save_file(self):
         if self.extra_money_val !=0:
             if self.popup_count == 0:
+                check_file = os.path.isfile('nowi_klienci.csv')
                 obecni_klienci = open('klienci_nowy_limit.csv', 'a', newline='')
                 columns = ['ClientID', 'Income', 'Rating', 'OldLimit', 'MaxLimit', 'Age', 'Education', 'GenderNumeric',
                            'StudentNumeric', 'MarriedNumeric','EthnicityNumeric']
@@ -603,7 +594,9 @@ class Current(tk.Frame):
                     csv_income = self.income_editable
                 else:
                     csv_income = self.id_income.get()
-                writer.writerow({'ClientID': self.clientid, 'Income': (csv_income * 100), 'Rating': self.id_rating.get(),
+                if not check_file:
+                    writer.writeheader()
+                writer.writerow({'ClientID': self.clientid, 'Income': csv_income, 'Rating': self.id_rating.get(),
                                  'OldLimit': self.old_limit_val, 'MaxLimit': self.current_new_limit, 'Age': self.id_age.get(),'Education': self.id_education.get(),
                                  'GenderNumeric': self.id_gender.get(), 'StudentNumeric': self.id_student.get(),'MarriedNumeric': self.id_married.get(),
                                  'EthnicityNumeric': self.id_ethnicity.get()})
@@ -659,7 +652,6 @@ class Current(tk.Frame):
         self.clientid = int(self.clientid_entry.get())
         self.show_fields()
         self.popup_count = 0
-        print(self.clientid)
 
     def clientid_validation(self, clientid):
         try:
@@ -700,7 +692,7 @@ class Current(tk.Frame):
             self.income_editable = 0
             income_afteredit.set(0)
         else:
-            self.income_editable = (float(self.income_editable_entry.get()) / 100)
+            self.income_editable = int(self.income_editable_entry.get())
             income_afteredit.set(self.income_editable_entry.get())
         self.income_editable_entry.destroy()
         self.income_editable_entry = tk.Entry(self, bd=3, textvariable=income_afteredit, font=font, width=9, state='readonly', justify='center')
@@ -710,7 +702,6 @@ class Current(tk.Frame):
         self.predict_new_limit()
         self.popup_count = 0
         self.check_save_button()
-        print(self.income_editable)
 
     def income_editable_validation(self, income_editable):
         try:
@@ -920,7 +911,6 @@ class Current(tk.Frame):
         max_limit_text = tk.Label(max_limit, text=self.current_new_limit, font=font)
         max_limit_text.pack(expand=True, fill="none")
         self.extra_money()
-        print(self.current_new_limit)
 
     def extra_money(self):
         if self.current_new_limit - self.old_limit_val < 0:
@@ -961,7 +951,6 @@ class Options(tk.Frame):
     def push_model(self):
         global model
         model = self.model_val.get()
-        print(model)
 
     def select_model_1(self, model_1):
         self.model_1.invoke()
