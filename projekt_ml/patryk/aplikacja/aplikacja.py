@@ -91,7 +91,7 @@ class New(tk.Frame):
         self.rating_y = 3
         self.new_x_rating = [[0.0, 0, 0, 0, 0, 0, 0]]
         self.limit = 0
-        self.new_x_limit = [[0.0, 0, 0, 0, 0, 0, 0, 0, 0]]
+        self.new_x_limit = [[0, 0, 0, 0, 0, 0, 0, 0, 0]]
         self.popup_count = 0
         self.rating_count = 0
         tk.Frame.bind_all(self, sequence='<F4>', func=lambda x: self.predict_rating())
@@ -556,6 +556,8 @@ class Current(tk.Frame):
         self.extra_money_val = 0
         self.popup_count = 0
         self.income_editable = 0
+        self.current_new_x_rating = [[0.0, 0, 0, 0, 0, 0, 0]]
+        self.current_new_x_limit = [[0, 0, 0, 0, 0, 0, 0, 0, 0]]
         tk.Frame.bind_all(self, sequence='<F4>', func=lambda x: self.show_editable_income())
         tk.Frame.bind_all(self, sequence='<F5>', func=lambda x: self.save_file())
         tk.Frame.bind_all(self, sequence='<F6>', func=lambda x: self.reset(master))
@@ -563,6 +565,21 @@ class Current(tk.Frame):
         self.show_clientid()
         self.show_inactive_fields()
         self.save_button()
+
+    def destroy_fields(self):
+        self.old_limit.destroy()
+        self.max_limit.destroy()
+        self.extra_limit.destroy()
+        self.income_entry.destroy()
+        self.rating_entry.destroy()
+        self.cards_entry.destroy()
+        self.age_entry.destroy()
+        self.education_entry.destroy()
+        self.balans_entry.destroy()
+        self.gender_entry.destroy()
+        self.student_entry.destroy()
+        self.married_entry.destroy()
+        self.ethnicity_entry.destroy()
 
     def load_model(self):
         if model == 1:
@@ -645,13 +662,20 @@ class Current(tk.Frame):
         self.clientid_entry.focus()
         self.clientid_entry.bind('<Return>', self.push_clientid)
         self.clientid_entry.bind('<FocusOut>', self.push_clientid)
-        self.current_new_x_rating = [[0.0, 0, 0, 0, 0, 0, 0]]
-        self.current_new_x_limit = [[0.0, 0, 0, 0, 0, 0, 0, 0, 0]]
 
     def push_clientid(self, event=None):
         self.clientid = int(self.clientid_entry.get())
-        self.show_fields()
-        self.popup_count = 0
+        my_data = np.genfromtxt('CreditNumericOnly.csv', delimiter=',')
+        self.find_row = my_data[np.where(my_data[:, 0] == self.clientid)]
+        if np.size(self.find_row) > 0:
+            self.show_fields()
+            self.popup_count = 0
+        else:
+            self.save.destroy()
+            self.destroy_fields()
+            self.bell()
+            self.save_button()
+            self.show_inactive_fields()
 
     def clientid_validation(self, clientid):
         try:
@@ -772,57 +796,43 @@ class Current(tk.Frame):
         self.extra_limit.grid(row=17, column=3, rowspan=2, sticky='nsew')
 
     def show_fields(self):
-        self.old_limit.destroy()
-        self.max_limit.destroy()
-        self.extra_limit.destroy()
-        self.income_entry.destroy()
-        self.rating_entry.destroy()
-        self.cards_entry.destroy()
-        self.age_entry.destroy()
-        self.education_entry.destroy()
-        self.balans_entry.destroy()
-        self.gender_entry.destroy()
-        self.student_entry.destroy()
-        self.married_entry.destroy()
-        self.ethnicity_entry.destroy()
-        my_data = np.genfromtxt('CreditNumericOnly.csv', delimiter=',')
-        find_row = my_data[np.where(my_data[:, 0] == self.clientid)]
+        self.destroy_fields()
         id_limit = tk.IntVar()
-        id_limit.set(int(find_row[0][2]))
+        id_limit.set(int(self.find_row[0][2]))
         limit_text = id_limit.get()
         self.old_limit_val = limit_text
         self.id_income = tk.DoubleVar()
-        self.id_income.set(int(find_row[0][1] * 1000))
+        self.id_income.set(int(self.find_row[0][1] * 1000))
         self.current_new_x_rating[0][0] = (self.id_income.get() / 100)
         self.current_new_x_limit[0][0] = (self.id_income.get() / 100)
         self.id_rating = tk.IntVar()
-        self.id_rating.set(int(find_row[0][3]))
+        self.id_rating.set(int(self.find_row[0][3]))
         self.id_cards = tk.IntVar()
-        self.id_cards.set(int(find_row[0][4]))
+        self.id_cards.set(int(self.find_row[0][4]))
         self.id_age = tk.IntVar()
-        self.id_age.set(int(find_row[0][5]))
+        self.id_age.set(int(self.find_row[0][5]))
         self.current_new_x_rating[0][1] = self.id_age.get()
         self.current_new_x_limit[0][2] = self.id_age.get()
         self.id_education = tk.IntVar()
-        self.id_education.set(int(find_row[0][6]))
+        self.id_education.set(int(self.find_row[0][6]))
         self.current_new_x_rating[0][2] = self.id_education.get()
         self.current_new_x_limit[0][3] = self.id_education.get()
         self.id_balans = tk.IntVar()
-        self.id_balans.set(int(find_row[0][7]))
+        self.id_balans.set(int(self.find_row[0][7]))
         self.id_gender = tk.IntVar()
-        self.id_gender.set(int(find_row[0][8]))
+        self.id_gender.set(int(self.find_row[0][8]))
         self.current_new_x_rating[0][3] = self.id_gender.get()
         self.current_new_x_limit[0][4] = self.id_gender.get()
         self.id_student = tk.IntVar()
-        self.id_student.set(int(find_row[0][9]))
+        self.id_student.set(int(self.find_row[0][9]))
         self.current_new_x_rating[0][4] = self.id_student.get()
         self.current_new_x_limit[0][5] = self.id_student.get()
         self.id_married = tk.IntVar()
-        self.id_married.set(int(find_row[0][10]))
+        self.id_married.set(int(self.find_row[0][10]))
         self.current_new_x_rating[0][5] = self.id_married.get()
         self.current_new_x_limit[0][6] = self.id_married.get()
         self.id_ethnicity = tk.IntVar()
-        self.id_ethnicity.set(int(find_row[0][11]))
+        self.id_ethnicity.set(int(self.find_row[0][11]))
         self.current_new_x_rating[0][6] = self.id_ethnicity.get()
         self.current_new_x_limit[0][7] = self.id_ethnicity.get()
         gender_text = tk.StringVar()
