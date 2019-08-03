@@ -2,7 +2,7 @@ import tkinter as tk
 from joblib import load
 import csv
 import os.path
-import numpy as np
+from numpy import genfromtxt, where, size
 import sys
 
 font = ('Verdana', 12)
@@ -16,6 +16,12 @@ def resource_path(relative_path):
     return os.path.join(os.path.abspath("."), relative_path)
 
 icon = resource_path('money.ico')
+database = resource_path('CreditNumericOnly.csv')
+rating_scaler_svr = resource_path('svr_scaler_rating.joblib')
+rating_model_svr = resource_path('svr_model_rating.joblib')
+limit_scaler_svr = resource_path('svr_scaler_limit.joblib')
+limit_model_svr = resource_path('svr_model_limit.joblib')
+
 
 class Credit(tk.Tk):
 
@@ -47,13 +53,15 @@ class Main(tk.Frame):
                   command=lambda: master.switch_frame(New)).grid(row=4, sticky='nsew')
         tk.Button(self, text='Obecny klient (F2)', font=font,
                   command=lambda: master.switch_frame(Current)).grid(row=5, sticky='nsew')
-        tk.Button(self, text='Wyjście (SHIFT + ESC)', font=font, command=lambda: master.destroy()).grid(row=6, sticky='nsew')
-        tk.Button(self, text='Ustawienia zaawansowane', font=font,
-                  command=lambda: master.switch_frame(Options)).grid(row=11, sticky='nsew')
+        tk.Button(self, text='Wyjście (SHIFT + ESC)', font=font,
+                  command=lambda: master.destroy()).grid(row=6, sticky='nsew')
+        # tk.Button(self, text='Ustawienia zaawansowane', font=font,
+        #          command=lambda: master.switch_frame(Options)).grid(row=11, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=7, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=8, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=9, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=10, sticky='nsew')
+        tk.Label(self, text=' ', font=large_font).grid(row=11, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=12, sticky='nsew')
         tk.Label(self, text='made by: team Fajni', font=small_font).grid(row=13, sticky='nsew')
         tk.Frame.bind_all(self, sequence='<F1>', func=lambda x: master.switch_frame(New))
@@ -65,7 +73,7 @@ class New(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Frame.focus_set(self)
-        tk.Label(self, text='Nowy klient', font=large_font).grid(row=0, columnspan=3)
+        tk.Label(self, text='Nowy klient:', font=large_font).grid(row=0, columnspan=3)
         tk.Label(self, text=' ', font=font).grid(row=1, columnspan=3, sticky='nsew')
         tk.Label(self, text=' ', font=font).grid(row=4, columnspan=3, sticky='nsew')
         tk.Label(self, text=' ', font=font).grid(row=8, columnspan=3, sticky='nsew')
@@ -79,7 +87,8 @@ class New(tk.Frame):
         tk.Label(self, text=' ', font=font).grid(row=18, column=0, sticky='nsew')
         tk.Button(self, text='Menu główne (ESC)', font=font,
                   command=lambda: master.switch_frame(Main)).grid(row=18, columnspan=3, sticky='nsew')
-        tk.Button(self, text='Reset (F6)', font=font, command=lambda: self.reset(master)).grid(row=16, column=0, sticky='nsew')
+        tk.Button(self, text='Reset (F6)', font=font,
+                  command=lambda: self.reset(master)).grid(row=16, column=0, sticky='nsew')
         self.income = 0
         self.age = 0
         self.education = 0
@@ -112,15 +121,15 @@ class New(tk.Frame):
 
     def load_model(self):
         if model == 1:
-            self.scaler_rating = load('svr_scaler_rating.joblib')
-            self.model_rating = load('svr_model_rating.joblib')
-            self.scaler_limit = load('svr_scaler_limit.joblib')
-            self.model_limit = load('svr_model_limit.joblib')
+            self.scaler_rating = load(rating_scaler_svr)
+            self.model_rating = load(rating_model_svr)
+            self.scaler_limit = load(limit_scaler_svr)
+            self.model_limit = load(limit_model_svr)
         elif model == 2:
-            self.scaler_rating = load('svr_scaler_rating.joblib')
-            self.model_rating = load('svr_model_rating.joblib')
-            self.scaler_limit = load('svr_scaler_limit.joblib')
-            self.model_limit = load('svr_model_limit.joblib')
+            self.scaler_rating = load(rating_scaler_svr)
+            self.model_rating = load(rating_model_svr)
+            self.scaler_limit = load(limit_scaler_svr)
+            self.model_limit = load(limit_model_svr)
 
     def check_save_button(self):
         if self.income != 0 and self.age != 0 and self.education != 0 and self.sex != 2\
@@ -137,7 +146,7 @@ class New(tk.Frame):
                 if not check_file:
                     self.client_id = 501
                 else:
-                    my_data = np.genfromtxt('nowi_klienci.csv', delimiter=',')
+                    my_data = genfromtxt('nowi_klienci.csv', delimiter=',')
                     last_id = my_data[-1][0]
                     self.client_id = int(last_id + 1)
                 nowi_klienci = open('nowi_klienci.csv', 'a', newline='')
@@ -148,8 +157,9 @@ class New(tk.Frame):
                     writer.writeheader()
                 writer.writerow({'ClientID': self.client_id, 'Income': self.income, 'Rating': self.rating,
                                  'Limit': self.limit, 'Age': self.age,'Education': self.education,
-                                 'GenderNumeric': self.sex, 'StudentNumeric': self.student,'MarriedNumeric': self.martial,
-                                 'EthnicityNumeric': self.ethnicity, 'Rating_Y': self.rating_y})
+                                 'GenderNumeric': self.sex, 'StudentNumeric': self.student,
+                                 'MarriedNumeric': self.martial, 'EthnicityNumeric': self.ethnicity,
+                                 'Rating_Y': self.rating_y})
                 self.popup_save_message()
         else:
             pass
@@ -536,7 +546,7 @@ class Current(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Frame.focus_set(self)
-        tk.Label(self, text='Obecny klient', font=large_font).grid(row=0, columnspan=4)
+        tk.Label(self, text='Obecny klient:', font=large_font).grid(row=0, columnspan=4)
         tk.Label(self, text=' ', font=font).grid(row=1, columnspan=4, sticky='nsew')
         tk.Label(self, text=' ', font=font).grid(row=4, columnspan=4, sticky='nsew')
         tk.Label(self, text=' ', font=font).grid(row=7, columnspan=4, sticky='nsew')
@@ -583,15 +593,15 @@ class Current(tk.Frame):
 
     def load_model(self):
         if model == 1:
-            self.scaler_rating = load('svr_scaler_rating.joblib')
-            self.model_rating = load('svr_model_rating.joblib')
-            self.scaler_limit = load('svr_scaler_limit.joblib')
-            self.model_limit = load('svr_model_limit.joblib')
+            self.scaler_rating = load(rating_scaler_svr)
+            self.model_rating = load(rating_model_svr)
+            self.scaler_limit = load(limit_scaler_svr)
+            self.model_limit = load(limit_model_svr)
         elif model == 2:
-            self.scaler_rating = load('svr_scaler_rating.joblib')
-            self.model_rating = load('svr_model_rating.joblib')
-            self.scaler_limit = load('svr_scaler_limit.joblib')
-            self.model_limit = load('svr_model_limit.joblib')
+            self.scaler_rating = load(rating_scaler_svr)
+            self.model_rating = load(rating_model_svr)
+            self.scaler_limit = load(limit_scaler_svr)
+            self.model_limit = load(limit_model_svr)
 
     def check_save_button(self):
         if self.extra_money_val !=0:
@@ -602,8 +612,8 @@ class Current(tk.Frame):
     def save_file(self):
         if self.extra_money_val !=0:
             if self.popup_count == 0:
-                check_file = os.path.isfile('nowi_klienci.csv')
-                obecni_klienci = open('klienci_nowy_limit.csv', 'a', newline='')
+                check_file = os.path.isfile('obecni_klienci.csv')
+                obecni_klienci = open('obecni_klienci.csv', 'a', newline='')
                 columns = ['ClientID', 'Income', 'Rating', 'OldLimit', 'MaxLimit', 'Age', 'Education', 'GenderNumeric',
                            'StudentNumeric', 'MarriedNumeric','EthnicityNumeric']
                 writer = csv.DictWriter(obecni_klienci, fieldnames=columns)
@@ -614,9 +624,10 @@ class Current(tk.Frame):
                 if not check_file:
                     writer.writeheader()
                 writer.writerow({'ClientID': self.clientid, 'Income': csv_income, 'Rating': self.id_rating.get(),
-                                 'OldLimit': self.old_limit_val, 'MaxLimit': self.current_new_limit, 'Age': self.id_age.get(),'Education': self.id_education.get(),
-                                 'GenderNumeric': self.id_gender.get(), 'StudentNumeric': self.id_student.get(),'MarriedNumeric': self.id_married.get(),
-                                 'EthnicityNumeric': self.id_ethnicity.get()})
+                                 'OldLimit': self.old_limit_val, 'MaxLimit': self.current_new_limit,
+                                 'Age': self.id_age.get(), 'Education': self.id_education.get(),
+                                 'GenderNumeric': self.id_gender.get(), 'StudentNumeric': self.id_student.get(),
+                                 'MarriedNumeric': self.id_married.get(),'EthnicityNumeric': self.id_ethnicity.get()})
                 self.popup_save_message()
         else:
             pass
@@ -664,18 +675,25 @@ class Current(tk.Frame):
         self.clientid_entry.bind('<FocusOut>', self.push_clientid)
 
     def push_clientid(self, event=None):
-        self.clientid = int(self.clientid_entry.get())
-        my_data = np.genfromtxt('CreditNumericOnly.csv', delimiter=',')
-        self.find_row = my_data[np.where(my_data[:, 0] == self.clientid)]
-        if np.size(self.find_row) > 0:
-            self.show_fields()
-            self.popup_count = 0
-        else:
+        if self.clientid_entry.get() == '':
             self.save.destroy()
             self.destroy_fields()
             self.bell()
             self.save_button()
             self.show_inactive_fields()
+        else:
+            self.clientid = int(self.clientid_entry.get())
+            my_data = genfromtxt(database, delimiter=',')
+            self.find_row = my_data[where(my_data[:, 0] == self.clientid)]
+            if size(self.find_row) > 0:
+                self.show_fields()
+                self.popup_count = 0
+            else:
+                self.save.destroy()
+                self.destroy_fields()
+                self.bell()
+                self.save_button()
+                self.show_inactive_fields()
 
     def clientid_validation(self, clientid):
         try:
@@ -719,7 +737,8 @@ class Current(tk.Frame):
             self.income_editable = int(self.income_editable_entry.get())
             income_afteredit.set(self.income_editable_entry.get())
         self.income_editable_entry.destroy()
-        self.income_editable_entry = tk.Entry(self, bd=3, textvariable=income_afteredit, font=font, width=9, state='readonly', justify='center')
+        self.income_editable_entry = tk.Entry(self, bd=3, textvariable=income_afteredit, font=font,
+                                              width=9, state='readonly', justify='center')
         self.income_editable_entry.grid(row=3, column=3)
         self.current_new_x_rating[0][0] = self.income_editable
         self.current_new_x_limit[0][0] = self.income_editable
@@ -864,7 +883,7 @@ class Current(tk.Frame):
         elif self.id_ethnicity.get() == 3:
             ethnicity_text.set('Afroamerykańska')
         self.income_entry_readonly = tk.Entry(self, bd=3, font=font, width=9, state='readonly',
-                                textvariable=self.id_income, justify='center')
+                                              textvariable=self.id_income, justify='center')
         self.income_entry_readonly.grid(row=3, column=3)
         rating_entry = tk.Entry(self, bd=3, font=font, width=9, state='readonly',
                                 textvariable=self.id_rating, justify='center')
@@ -971,7 +990,8 @@ class Options(tk.Frame):
     def popup_warning(self):
         self.popup = tk.Toplevel()
         tk.Label(self.popup).pack()
-        popup_text = 'Uwaga!\nWprowadzone tu zmiany będą miały wpływ\nna otrzymywane wyniki!\nZmian dokonujesz na własne ryzyko.'
+        popup_text = 'Uwaga!\nWprowadzone tu zmiany będą miały wpływ\nna otrzymywane wyniki!' \
+                     '\nZmian dokonujesz na własne ryzyko.'
         tk.Label(self.popup, text=popup_text, font=font).pack()
         tk.Label(self.popup).pack()
         close = tk.Button(self.popup, text='OK', font=font, command=lambda: self.popup.destroy())
@@ -996,3 +1016,7 @@ if __name__ == '__main__':
     app.resizable(False, False)
     app.iconbitmap(icon)
     app.mainloop()
+
+# pyinstaller --clean -F -w -i=money.ico --add-data="money.ico;." --add-data="svr_model_limit.joblib;."
+# --add-data="svr_model_rating.joblib;." --add-data="svr_scaler_limit.joblib;." --add-data="svr_scaler_rating.joblib;."
+# --add-data="CreditNumericOnly.csv;." aplikacja.py
