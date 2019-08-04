@@ -15,6 +15,7 @@
 - NumPy oraz SciKit-Learn
 &nbsp;
 &nbsp;
+&nbsp;
 #### DEFINITION OF DONE
 - przygotowanie i oczyszczenie danych do analizy,
 - założenie repozytorium oraz branchów na githubie
