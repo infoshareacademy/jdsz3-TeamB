@@ -12,7 +12,7 @@
 ### Kalkulator zdolności kredytowej
 ##### Wymagania:
 - środowisko python (python.exe dodany do PATH)
-- NumPy oraz SciKit-Learn
+- NumPy, XGBoost oraz SciKit-Learn
 
 &nbsp;
 &nbsp;
