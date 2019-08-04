@@ -5,18 +5,22 @@
 &nbsp;
 &nbsp;
 #### Baza danych:
-##### [IBM HR Analytics Employee Attrition & Performance](https://www.kaggle.com/pavansubhasht/ibm-hr-analytics-attrition-dataset)
+##### [Credit from package ‘ISLR’](http://faculty.marshall.usc.edu/gareth-james/ISL/Credit.csv)
 &nbsp;
 &nbsp;
-### Zadanie dodatkowe:
-#### Aplikacja dokonująca obliczeń oraz rysująca wykresy dla ww. bazy danych
-#### (uruchamiamy ją plikiem program.bat, wymaga pythona dodanego do PATH)
+### Aplikacja:
+#### Kalkulator zdolności kredytowej
+##### Wymagania:
+##### - środowisko python (python.exe dodany do PATH)
+##### - NumPy oraz SciKit-Learn
 &nbsp;
 &nbsp;
 #### DEFINITION OF DONE
 - przygotowanie i oczyszczenie danych do analizy,
 - założenie repozytorium oraz branchów na githubie
 - analiza bazy danych za pomocą odpowiednich skryptów
+- porównanie modeli oraz wybór najlepszego
+- przygotowanie aplikacji
 - sformułowanie wniosków
 - umieszczenie skryptów w repozytorium
 - wizualizacja wnioskow
