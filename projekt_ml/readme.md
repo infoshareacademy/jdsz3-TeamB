@@ -13,7 +13,7 @@
 ##### Wymagania:
 - środowisko python (python.exe dodany do PATH)
 - NumPy oraz SciKit-Learn
-&nbsp;
+
 &nbsp;
 &nbsp;
 #### DEFINITION OF DONE
