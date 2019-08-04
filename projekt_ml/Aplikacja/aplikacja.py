@@ -208,6 +208,7 @@ class New(tk.Frame):
             self.count_active = tk.Button(self, text='Oblicz rating\noraz limit (F4)', font=font,
                                           command=self.predict_rating)
             self.count_active.grid(row=12, rowspan=2, column=0, sticky='nsew')
+            self.popup_count = 0
 
     def get_income(self):
         income_validator = self.register(self.income_validation)
