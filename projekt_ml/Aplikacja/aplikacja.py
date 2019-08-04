@@ -958,6 +958,7 @@ class Options(tk.Frame):
         tk.Label(self, text=' ', font=font).grid(row=5, sticky='nsew')
         tk.Button(self, text='Menu główne (ESC)', font=font,
                   command=lambda: master.switch_frame(Main)).grid(row=6, column=0, sticky='nsew')
+        tk.Frame.bind_all(self, sequence='<Escape>', func=lambda x: master.switch_frame(Main))
         self.popup_warning()
         self.select_model()
 
