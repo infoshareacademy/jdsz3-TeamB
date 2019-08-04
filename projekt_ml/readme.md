@@ -5,11 +5,11 @@
 &nbsp;
 &nbsp;
 #### Baza danych:
-##### [Credit from package ‘ISLR’](http://faculty.marshall.usc.edu/gareth-james/ISL/Credit.csv)
+##### [Credit.csv from package ‘ISLR’](http://faculty.marshall.usc.edu/gareth-james/ISL/Credit.csv)
 &nbsp;
 &nbsp;
-### Aplikacja:
-#### Kalkulator zdolności kredytowej
+## Aplikacja:
+### Kalkulator zdolności kredytowej
 ##### Wymagania:
 ##### - środowisko python (python.exe dodany do PATH)
 ##### - NumPy oraz SciKit-Learn
