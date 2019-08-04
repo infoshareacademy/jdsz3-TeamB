@@ -953,7 +953,7 @@ class Options(tk.Frame):
     def __init__(self, master):
         tk.Frame.__init__(self, master)
         tk.Frame.focus_set(self)
-        tk.Label(self, text='Obecny klient', font=large_font).grid(row=0, column=0)
+        tk.Label(self, text='Ustawienia zaawansowane:', font=large_font).grid(row=0, column=0)
         tk.Label(self, text=' ', font=font).grid(row=1, sticky='nsew')
         tk.Label(self, text=' ', font=font).grid(row=5, sticky='nsew')
         tk.Button(self, text='Menu główne (ESC)', font=font,
