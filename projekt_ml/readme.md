@@ -11,8 +11,8 @@
 ## Aplikacja:
 ### Kalkulator zdolności kredytowej
 ##### Wymagania:
-##### - środowisko python (python.exe dodany do PATH)
-##### - NumPy oraz SciKit-Learn
+- środowisko python (python.exe dodany do PATH)
+- NumPy oraz SciKit-Learn
 &nbsp;
 &nbsp;
 #### DEFINITION OF DONE
