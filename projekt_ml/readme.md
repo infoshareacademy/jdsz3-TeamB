@@ -1,8 +1,7 @@
-# **Projekt Python**
+# **Projekt Machine Learning**
 &nbsp;
 &nbsp;
-## Czynniki wpływające na wysokość zarobków
-### Analiza bazy danych pracowników IBM
+## Porównanie modeli oraz predykcja zdolności kredytowej na podstawie wybranej bazy danych
 &nbsp;
 &nbsp;
 #### Baza danych:
