@@ -738,8 +738,8 @@ class Current(tk.Frame):
         self.income_editable_entry = tk.Entry(self, bd=3, textvariable=income_afteredit, font=font,
                                               width=9, state='readonly', justify='center')
         self.income_editable_entry.grid(row=3, column=3)
-        self.current_new_x_rating[0][0] = self.income_editable
-        self.current_new_x_limit[0][0] = self.income_editable
+        self.current_new_x_rating[0][0] = (self.income_editable / 100)
+        self.current_new_x_limit[0][0] = (self.income_editable / 100)
         self.predict_new_limit()
         self.popup_count = 0
         self.check_save_button()
