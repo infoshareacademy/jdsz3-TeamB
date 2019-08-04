@@ -17,15 +17,12 @@ def resource_path(relative_path):
 
 icon = resource_path('money.ico')
 database = resource_path('CreditNumericOnly.csv')
-rating_scaler_svr = resource_path('svr_scaler_rating.joblib')
+rating_scaler = resource_path('scaler_rating.joblib')
+limit_scaler = resource_path('scaler_limit.joblib')
 rating_model_svr = resource_path('svr_model_rating.joblib')
-limit_scaler_svr = resource_path('svr_scaler_limit.joblib')
 limit_model_svr = resource_path('svr_model_limit.joblib')
-
-# rating_scaler_xgb = resource_path('.joblib')
-# rating_model_xgb = resource_path('.joblib')
-# limit_scaler_xgb = resource_path('.joblib')
-# limit_model_xgb = resource_path('.joblib')
+rating_model_xgb = resource_path('xgb_model_rating.joblib')
+limit_model_xgb = resource_path('xgb_model_limit.joblib')
 
 
 class Credit(tk.Tk):
@@ -60,13 +57,12 @@ class Main(tk.Frame):
                   command=lambda: master.switch_frame(Current)).grid(row=5, sticky='nsew')
         tk.Button(self, text='Wyjście (SHIFT + ESC)', font=font,
                   command=lambda: master.destroy()).grid(row=6, sticky='nsew')
-        # tk.Button(self, text='Ustawienia zaawansowane', font=font,
-        #          command=lambda: master.switch_frame(Options)).grid(row=11, sticky='nsew')
+        tk.Button(self, text='Ustawienia zaawansowane', font=font,
+                  command=lambda: master.switch_frame(Options)).grid(row=11, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=7, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=8, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=9, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=10, sticky='nsew')
-        tk.Label(self, text=' ', font=large_font).grid(row=11, sticky='nsew')
         tk.Label(self, text=' ', font=large_font).grid(row=12, sticky='nsew')
         tk.Label(self, text='made by: team Fajni', font=small_font).grid(row=13, sticky='nsew')
         tk.Frame.bind_all(self, sequence='<F1>', func=lambda x: master.switch_frame(New))
@@ -125,16 +121,14 @@ class New(tk.Frame):
         self.show_limit()
 
     def load_model(self):
+        self.scaler_rating = load(rating_scaler)
+        self.scaler_limit = load(limit_scaler)
         if model == 1:
-            self.scaler_rating = load(rating_scaler_svr)
             self.model_rating = load(rating_model_svr)
-            self.scaler_limit = load(limit_scaler_svr)
             self.model_limit = load(limit_model_svr)
-        # elif model == 2:
-            # self.scaler_rating = load(rating_scaler_xgb)
-            # self.model_rating = load(rating_model_xgb)
-            # self.scaler_limit = load(limit_scaler_xgb)
-            # self.model_limit = load(limit_model_xgb)
+        elif model == 2:
+            self.model_rating = load(rating_model_xgb)
+            self.model_limit = load(limit_model_xgb)
 
     def check_save_button(self):
         if self.income != 0 and self.age != 0 and self.education != 0 and self.sex != 2\
@@ -597,16 +591,14 @@ class Current(tk.Frame):
         self.ethnicity_entry.destroy()
 
     def load_model(self):
+        self.scaler_rating = load(rating_scaler)
+        self.scaler_limit = load(limit_scaler)
         if model == 1:
-            self.scaler_rating = load(rating_scaler_svr)
             self.model_rating = load(rating_model_svr)
-            self.scaler_limit = load(limit_scaler_svr)
             self.model_limit = load(limit_model_svr)
-        # elif model == 2:
-            # self.scaler_rating = load(rating_scaler_xgb)
-            # self.model_rating = load(rating_model_xgb)
-            # self.scaler_limit = load(limit_scaler_xgb)
-            # self.model_limit = load(limit_model_xgb)
+        elif model == 2:
+            self.model_rating = load(rating_model_xgb)
+            self.model_limit = load(limit_model_xgb)
 
     def check_save_button(self):
         if self.extra_money_val !=0:
@@ -973,10 +965,10 @@ class Options(tk.Frame):
         model_label = tk.Label(self, text='Wybierz model:', font=font)
         model_label.grid(row=2, column=0)
         self.model_val = tk.IntVar(self, value=1)
-        self.model_1 = tk.Radiobutton(self, text='SVR_1', command=self.push_model,
+        self.model_1 = tk.Radiobutton(self, text='SVR', command=self.push_model,
                                          font=font, variable=self.model_val, value=1, indicatoron=1)
         self.model_1.grid(row=3, column=0)
-        self.model_2 = tk.Radiobutton(self, text='SVR_2', command=self.push_model,
+        self.model_2 = tk.Radiobutton(self, text='XGBoost', command=self.push_model,
                                         font=font, variable=self.model_val, value=2, indicatoron=1)
         self.model_2.grid(row=4, column=0)
         self.model_1.bind('<Return>', self.select_model_1)
