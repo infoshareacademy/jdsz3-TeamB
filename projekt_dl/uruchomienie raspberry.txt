@@ -1,0 +1,8 @@
+1. startx -----> uruchaamia system 
+
+2. ctrl alt t ----> w³¹cza terminal
+
+3. cd home/pi/Download ----> przejœcie do folderu z modelem
+
+4. python3 New.py -----> uruchomienie detekcji twarzy
+
