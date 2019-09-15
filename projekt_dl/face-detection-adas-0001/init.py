@@ -6,6 +6,8 @@ import numpy as np
 import time
 import statistics
 
+cv.setUseOptimized(onoff=True)
+
 fpsList = []
 
 # Measure elapsed time
@@ -14,8 +16,6 @@ s = time.time()
 # Load the model.
 net = cv.dnn.readNet('face-detection-adas-0001.xml',
                      'face-detection-adas-0001.bin')
-# Specify target device.
-net.setPreferableTarget(cv.dnn.DNN_TARGET_CPU)
 
 # Get IP adress of camera
 ipAdress = str(input('Wprowadź adres IP kamery: '))
@@ -45,7 +45,7 @@ while True:
         ymin = int(detection[4] * image.shape[0])
         xmax = int(detection[5] * image.shape[1])
         ymax = int(detection[6] * image.shape[0])
-        if confidence > 0.5:
+        if confidence > 0.7:
             percentage = str(int(confidence*100))
             cv.rectangle(image, (xmin, ymin), (xmax, ymax), color=(0, 255, 0), thickness=2)
             cv.putText(image, percentage, (xmin, (ymin - 5)), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
