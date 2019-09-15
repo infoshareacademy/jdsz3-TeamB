@@ -45,7 +45,7 @@ while True:
         ymin = int(detection[4] * image.shape[0])
         xmax = int(detection[5] * image.shape[1])
         ymax = int(detection[6] * image.shape[0])
-        if confidence > 0.7:
+        if confidence > 0.5:
             percentage = str(int(confidence*100))
             cv.rectangle(image, (xmin, ymin), (xmax, ymax), color=(0, 255, 0), thickness=2)
             cv.putText(image, percentage, (xmin, (ymin - 5)), cv.FONT_HERSHEY_SIMPLEX, 1, (0, 255, 0), 2)
