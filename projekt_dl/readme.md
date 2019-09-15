@@ -1,30 +1,17 @@
-# **Projekt Machine Learning**
+# **Projekt Deep Learning**
 &nbsp;
 &nbsp;
-## Porównanie modeli oraz predykcja zdolności kredytowej na podstawie wybranej bazy danych
+## Detekcja obiektów w czasie rzeczywistym
 &nbsp;
 &nbsp;
-#### Baza danych:
-##### [Credit.csv from package ‘ISLR’](http://faculty.marshall.usc.edu/gareth-james/ISL/Credit.csv)
-&nbsp;
-&nbsp;
-## Aplikacja:
-### Kalkulator zdolności kredytowej
-##### Wymagania:
-- środowisko python (python.exe dodany do PATH)
-- NumPy, XGBoost oraz SciKit-Learn
-
+#### Detekcja twarzy w czasie rzeczywistym z wykorzystaniem modelu skonwertowanego do xml+bin za pomocą OpenVino, biblioteki OpenCV oraz kamerki webowej.
 &nbsp;
 &nbsp;
 #### DEFINITION OF DONE
-- przygotowanie i oczyszczenie danych do analizy,
 - założenie repozytorium oraz branchów na githubie
-- analiza bazy danych za pomocą odpowiednich skryptów
-- porównanie modeli oraz wybór najlepszego
-- przygotowanie aplikacji
-- sformułowanie wniosków
-- umieszczenie skryptów w repozytorium
-- wizualizacja wnioskow
+- przygotowanie oraz konwersja modelu
+- napisanie aplikacji w pythonie
+- umieszczenie plików w repozytorium
 
 &nbsp;
 &nbsp;
